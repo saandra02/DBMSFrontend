@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #9CB2CE;
+}
+.header{
+  background-color: #3C5898;
+  color: #D4D8E8;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  font-family:"Copperplate", fantasy;
+  padding-left: 10px;
+}
+.subheader{
+  background-color: #FEFEFE;
+  color: #FEFEFE;
+  padding-left: 10px;
+}
+.HomePage{
+  background-color: #29487D;
+  height: 700px;
+}
+.HomeMessage{
+  text-align: center;
+  font-size: 30px;
+  color: #FEFEFE;
+}
+.LoginOptions{
+  margin: auto;
+  padding-top:50px;
+}
+td.LoginOption{
+  background-color: #FEFEFE;
+  text-align: center;
+}
+td.LoginOption:hover{
+  background-color: #8093AB;
+}
+tr.LoginOption{
+  height: 250px;
+}
+a {
+  color: #29487D;
+  text-decoration: none;
+  display: block;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: #8EA2BD;
+  height: 100%; 
+  position: fixed; 
+  overflow: auto;
+}
+a.sidebarlink {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #39495E;
+  display: block;
+  transition: 0.3s;
+}
+a:hover{
+  background-color: #8093AB;
+}
+.LoginForm {
+  background-color: #fefefe;
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: center;
+}
+
+.LoginHeader{
+  background-color: #29487D;
+  color: #FEFEFE;
+  width: 104.5%;
+  height: 70px;
+  line-height: 70px;
+  margin-top:-10px;
+  margin-left: -10px;
+  text-align: center;
+  font-family: 'Lucida Console', monospace;
+  text-transform: uppercase;
+}
+.Submit{
+  background-color: #29487D;
+  color: #FEFEFE;
+  text-align: center;
+  height: 40px;
+  width: 80px;
+  font-size: 15px;
+}
+.OtherLogins{
+  font-size: 12px;
+  color: #3C5898;
+}
+.LoginForm input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 70%;
+  height: 40px;
+  font-size: 15px;
+  }
+
+  .Report {
+    background-color: #fefefe;
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+  }
+  .ReportHeader{
+    background-color: #29487D;
+    color: #FEFEFE;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+    text-align: left;
+    margin-top:-10px;
+    margin-left: -10px;
+    padding: 10px;
+    font-family: 'Lucida Console', monospace;
+  }
+  .Report table {
+    width: 80%;
+    text-align: left;
+  }
+  .Report label{
+    text-decoration: underline;
+    font-size: 15px;
+  }
+
+  .Report input:disabled{
+    background-color: #FEFEFE;
+    border: 0px;
+    color: black;
+    font-size: 13px;
+    text-transform: capitalize;
+  }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

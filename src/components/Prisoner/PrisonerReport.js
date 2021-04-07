@@ -3,18 +3,33 @@ import PrisonerNavBar from './PrisonerNavBar.js'
 class PrisonerReport extends Component {
   state = {
     pid:null,
-    first_name:"John", 
-    last_name:"Doe",
-    ht_in_m: 1.63,
-    wt_in_kg: 65.57,
-    eye_colour: "black",
-    hair_colour: "black",
-    show: false
+    first_name:null, 
+    last_name:null,
+    age: null,
+    entry_date: null,
+    ht_in_m: null,
+    wt_in_kg: null,
+    eye_colour: null,
+    hair_colour: null,
+    prison: null,
+    employer:null
   }
   componentDidMount(){
-    let id = this.props.match.params.id;
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    console.log(user);
     this.setState({
-      pid : id
+      pid : user.pid,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      age: user.age,
+      entry_date: user.entry_date,
+      ht_in_m: user.ht_in_m,
+      wt_in_kg: user.wt_in_kg,
+      hair_colour: user.hair_colour,
+      eye_colour: user.eye_colour,
+      prison: user.prison_no,
+      employer: user.employed_by
+
     })
   } 
   render() {
@@ -25,9 +40,9 @@ class PrisonerReport extends Component {
         <div className = "ReportHeader"> Prisoner #{this.state.pid} </div>
         <br></br>
         <form>
+          <p> Personal Details</p>
           <table>
           <tbody>
-          <th> Personal Details</th>
           <tr>
           <td>
           <label htmlFor="first_name"> First Name: </label>
@@ -74,15 +89,15 @@ class PrisonerReport extends Component {
           </tbody>
           </table>
           <br/>
+          <p> Work Details</p>
           <table>
           <tbody>
-            <th> Work Details</th>
             </tbody>
           </table>
           <br/>
+          <p> Crime History</p>
           <table>
           <tbody>
-            <th> Crime History</th>
           </tbody>
           </table>
         </form>

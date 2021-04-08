@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PrisonerNavBar from './PrisonerNavBar.js'
 class PrisonerReport extends Component {
   state = {
     pid:null,
@@ -35,7 +34,6 @@ class PrisonerReport extends Component {
   render() {
     return (
       <div>
-      <PrisonerNavBar />
       <div className="Report">
         <div className = "ReportHeader"> Prisoner #{this.state.pid} </div>
         <br></br>

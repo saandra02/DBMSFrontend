@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom'
 
-class PrisonerNavBar extends Component{
+class BusinessNavBar extends Component{
     HandleLogout = (e) => {
         sessionStorage.removeItem("access_token");
         sessionStorage.removeItem("user");
@@ -10,7 +10,9 @@ class PrisonerNavBar extends Component{
         return (
             <div className="navbar">
                 <ul className="navbar">
-                    <li>  <NavLink to="/prisoner" className="sidebarlink">Profile</NavLink></li>
+                    <li>  <NavLink to="/guard" className="sidebarlink">Profile</NavLink></li>
+                    <li>  <NavLink to="/" className="sidebarlink">View Employees</NavLink></li>
+                    <li> <NavLink to="/" className="sidebarlink"> Update Requirements </NavLink></li>
                     <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>
             </div>
@@ -21,4 +23,4 @@ class PrisonerNavBar extends Component{
 
 }
 
-export default PrisonerNavBar;
+export default BusinessNavBar;

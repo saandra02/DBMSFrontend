@@ -62,7 +62,6 @@ class LoginForm extends Component {
         console.log(error);
       });
     } else if(this.state.role==="Relative"){
-      sessionStorage.setItem("id", this.state.username);
       axios({
         method: 'post',
         url: '/relative_login',
@@ -78,11 +77,9 @@ class LoginForm extends Component {
         sessionStorage.setItem("user", JSON.stringify((JSON.parse(response.data[key]))[0]));
         window.location.href = "/relative";
       }, (error) => {
-        sessionStorage.removeItem("id");
         console.log(error);
       });
     } else if(this.state.role==="Business"){
-      sessionStorage.setItem("id", this.state.username);
       axios({
         method: 'post',
         url: '/business_login',
@@ -94,7 +91,6 @@ class LoginForm extends Component {
         sessionStorage.setItem("access_token",response.data.access_token);
         window.location.href = '/business';
       }, (error) => {
-        sessionStorage.removeItem("id");
         console.log(error);
       });
 

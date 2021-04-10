@@ -4,10 +4,11 @@ import GuardReport from './GuardReport.js';
 
 class GuardProfile extends Component {
   render() {
+    var user = JSON.parse(sessionStorage.getItem('user'));
     return (
       <div>
           <GuardNavBar />
-          <GuardReport />
+          <GuardReport id = {user.empid} />
       </div>
     );
   }

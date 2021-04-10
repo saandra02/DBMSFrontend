@@ -3,10 +3,11 @@ import PrisonerNavBar from './PrisonerNavBar.js';
 import PrisonerReport from './PrisonerReport.js';
 class PrisonerProfile extends Component {
   render() {
+    var user = JSON.parse(sessionStorage.getItem('user'));
     return (
       <div>
           <PrisonerNavBar />
-          <PrisonerReport />
+          <PrisonerReport id = {user.pid} />
       </div>
     );
   }

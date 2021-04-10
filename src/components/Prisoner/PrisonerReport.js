@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 class PrisonerReport extends Component {
   state = {
     pid:null,
@@ -14,22 +15,17 @@ class PrisonerReport extends Component {
     employer:null
   }
   componentDidMount(){
-    var user = JSON.parse(sessionStorage.getItem("user"));
-    console.log(user);
-    this.setState({
-      pid : user.pid,
-      first_name: user.first_name,
-      last_name: user.last_name,
-      age: user.age,
-      entry_date: user.entry_date,
-      ht_in_m: user.ht_in_m,
-      wt_in_kg: user.wt_in_kg,
-      hair_colour: user.hair_colour,
-      eye_colour: user.eye_colour,
-      prison: user.prison_no,
-      employer: user.employed_by
-
-    })
+    var url = '/prisoner_report/'.concat(sessionStorage.getItem("id"));
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'get',
+      url: url,
+      headers: {'Authorization': header}
+    }).then((response) => {
+      console.log(response.data);
+    }, (error) => {
+      console.log(error);
+    });
   } 
   render() {
     return (

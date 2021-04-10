@@ -9,6 +9,7 @@ import BusinessProfile from './components/Business/BusinessProfile.js';
 import GuardProfile from './components/Guard/GuardProfile.js';
 import WardenProfile from './components/Warden/WardenProfile.js';
 import ChiefWardenProfile from './components/Chief Warden/ChiefWardenProfile.js';
+import PrisonerList from './components/Prisoner/PrisonerList.js';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
       <Route path='/chiefwarden' component={ChiefWardenProfile}/>
       <Route path='/relative' component={RelativeProfile} />
       <Route path = '/business' component={BusinessProfile} />
+      <Route path = '/view_prisoners' component={PrisonerList} />
       </div>
       </BrowserRouter>
     );

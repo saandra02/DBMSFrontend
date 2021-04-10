@@ -10,9 +10,9 @@ class GuardNavBar extends Component{
         return (
             <div className="navbar">
                 <ul className="navbar">
-                    <li>  <NavLink to="/guard" class="sidebarlink">Profile</NavLink></li>
-                    <li>  <NavLink to="/" class="sidebarlink">View Prisoners</NavLink></li>
-                    <li> <NavLink onClick={this.HandleLogout} to="/" class="sidebarlink">Logout</NavLink></li> 
+                    <li>  <NavLink to="/guard" className="sidebarlink">Profile</NavLink></li>
+                    <li>  <NavLink to="/view_prisoners" className="sidebarlink">View Prisoners</NavLink></li>
+                    <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>
             </div>
             

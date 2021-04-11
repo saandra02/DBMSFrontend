@@ -10,6 +10,7 @@ import GuardProfile from './components/Guard/GuardProfile.js';
 import WardenProfile from './components/Warden/WardenProfile.js';
 import ChiefWardenProfile from './components/Chief Warden/ChiefWardenProfile.js';
 import PrisonerList from './components/Prisoner/PrisonerList.js';
+import GuardPrisonerReportView from './components/Guard/PrisonerReportView.js'
 
 
 class App extends Component {
@@ -19,14 +20,15 @@ class App extends Component {
       <div className="App">
       <Header />
       <Route exact path='/' component ={Home}/>
-      <Route path='/login/:role' component={LoginForm}/>
-      <Route path='/prisoner' component={PrisonerProfile}/>
-      <Route path='/guard' component={GuardProfile} />
-      <Route path='/warden' component={WardenProfile}/>
-      <Route path='/chiefwarden' component={ChiefWardenProfile}/>
-      <Route path='/relative' component={RelativeProfile} />
-      <Route path = '/business' component={BusinessProfile} />
-      <Route path = '/view_prisoners' component={PrisonerList} />
+      <Route exact path='/login/:role' component={LoginForm}/>
+      <Route exact path='/prisoner' component={PrisonerProfile}/>
+      <Route exact path='/guard' component={GuardProfile} />
+      <Route exact path='/warden' component={WardenProfile}/>
+      <Route exact path='/chiefwarden' component={ChiefWardenProfile}/>
+      <Route exact path='/relative' component={RelativeProfile} />
+      <Route exact path = '/business' component={BusinessProfile} />
+      <Route exact path = '/view_prisoners' component={PrisonerList} />
+      <Route exact path= '/guard/view_prisoner/:id' component = {GuardPrisonerReportView} />
       </div>
       </BrowserRouter>
     );

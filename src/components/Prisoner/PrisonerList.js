@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 class PrisonerList extends Component {
   state = {
       prisoners: null
@@ -22,23 +23,31 @@ class PrisonerList extends Component {
       console.log(error);
     });
   }
+  ViewReport = () =>  {
+    console.log("Hello");
+  }
   renderTableData = () => {
       for(var i=0; i<this.state.prisoners.length; i++){
           var table = document.getElementById("prisoners");
-          var row = table.insertRow(i);
+          var row = table.insertRow(i+1);
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
           cell1.innerHTML = this.state.prisoners[i].pid;
           cell2.innerHTML = this.state.prisoners[i].first_name.concat(" ").concat(this.state.prisoners[i].last_name);
-          cell3.innerHTML = "View Details";
+          cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/guard/view_prisoner/' + this.state.prisoners[i].pid +'"})()> Report </button>' ;
       }
   } 
   render() {
     return (
-    <div>
-    <h1 id='title'>React Dynamic Table</h1>
-    <table id='prisoners'>
+    <div className="List">
+    <div className="ListHeader"> Prisoners List</div>
+    <table id='prisoners' className='list-table'>
+    <tr>
+      <th> Prisoner ID </th>
+      <th> Prisoner Name</th>
+      <th> View Report</th>
+     </tr>
     </table>
     </div>
     );

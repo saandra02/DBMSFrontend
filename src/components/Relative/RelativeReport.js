@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class RelativeReport extends Component {
   state = {
@@ -6,19 +7,41 @@ class RelativeReport extends Component {
     first_name: null,
     last_name: null,
     pid: null,
-    relation: null
+    relation: null,
+    prison_number: null,
+    appointment_date: null
   }
   componentDidMount(){
-    var user = JSON.parse(sessionStorage.getItem("user"));
-    this.setState({
-      rid : user.rid,
-      first_name: user.first_name,
-      last_name: user.last_name, 
-      name: user.first_name.concat(" ").concat(user.last_name),
-      pid: user.pid, 
-      relation: user.relation
-    })
-  } 
+    var id = this.props.id;
+    var url = '/relative_sheet/'.concat(id)
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'get',
+      url: url,
+      headers: {'Authorization': header}
+    }).then((response) => {
+      var key = "Relative ".concat(id);
+      var res = JSON.parse(response.data[key]);
+      var appointment_date = [];
+      var length = res.length;
+      for (var i=0;i<length;i++){
+        appointment_date[i]=res[i].appointment_date;
+      }
+      this.setState({
+        rid: res[0].rid,
+        first_name: res[0].first_name,
+        last_name: res[0].last_name,
+        pid: res[0].pid,
+        relation: res[0].relation,
+        prison_number: res[0].prison_no,
+        appointment_date: appointment_date
+      })
+      console.log(this.state);
+      
+    }, (error) => {
+      console.log(error);
+    });
+  }
   render() {
     return (
       <div>

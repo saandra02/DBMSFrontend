@@ -4,10 +4,11 @@ import RelativeReport from './RelativeReport.js';
 
 class RelativeProfile extends Component {
   render() {
+    var user = JSON.parse(sessionStorage.getItem('user'));
     return (
       <div>
           <RelativeNavBar />
-          <RelativeReport />
+          <RelativeReport id={user.rid}/>
       </div>
     );
   }

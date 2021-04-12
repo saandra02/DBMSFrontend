@@ -10,8 +10,10 @@ import GuardProfile from './components/Guard/GuardProfile.js';
 import WardenProfile from './components/Warden/WardenProfile.js';
 import ChiefWardenProfile from './components/Chief Warden/ChiefWardenProfile.js';
 import PrisonerList from './components/Prisoner/PrisonerList.js';
-import GuardPrisonerReportView from './components/Guard/PrisonerReportView.js'
-
+import GuardPrisonerReportView from './components/Guard/PrisonerReportView.js';
+import WardenPrisonerReportView from './components/Warden/WPrisonerReportView.js';
+import WardenGuardReportView from './components/Warden/GuardReportView.js';
+import GuardList from './components/Guard/GuardList.js';
 
 class App extends Component {
   render() {
@@ -29,6 +31,9 @@ class App extends Component {
       <Route exact path = '/business' component={BusinessProfile} />
       <Route exact path = '/view_prisoners' component={PrisonerList} />
       <Route exact path= '/guard/view_prisoner/:id' component = {GuardPrisonerReportView} />
+      <Route exact path= '/warden/view_prisoner/:id' component = {WardenPrisonerReportView} />
+      <Route exact path= '/warden/view_guard/:id' component = {WardenGuardReportView} />
+      <Route exact path = '/view_guards' component= {GuardList} />
       </div>
       </BrowserRouter>
     );

@@ -50,9 +50,9 @@ class PrisonerReport extends Component {
         relatives[i] = relativeobject;
         console.log(i);
         id_marks[i] = res[i].identifying_mark;
-        crimes[i] = res[i].c_name;
+        crimes[i] = " ".concat(res[i].c_name);
         if(res[i].p_2 != null)
-        affiliations[i] = "Prisoner ".concat(res[i].p_2);
+        affiliations[i] = " Prisoner ".concat(res[i].p_2);
       }
       console.log(res[0]);
       console.log(chores);
@@ -101,20 +101,21 @@ class PrisonerReport extends Component {
   renderRelatives = () => {
     var table = document.getElementById("relative-section");
     var length = this.state.relative.length;
+    table.className = "FunctionTable";
     for(var i = 0; i < length; i++)
     {
       var row = table.insertRow(i);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      cell1.innerHTML = this.state.relative[i].first_name;
-      cell2.innerHTML = this.state.relative[i].last_name;
-      cell3.innerHTML = this.state.relative[i].relation;
+      if(this.state.relative[i].first_name !== null)
+      cell1.innerHTML = this.state.relative[i].first_name.concat(' ').concat(this.state.relative[i].last_name);
+      cell2.innerHTML = this.state.relative[i].relation;
     }
   }
   renderChores = () => {
     var table = document.getElementById("chore-section");
     var length = this.state.chore.length;
+    table.className = "FunctionTable";
     for(var i = 0; i < length; i++)
     {
       var row = table.insertRow(i);
@@ -127,12 +128,12 @@ class PrisonerReport extends Component {
   render() {
     return (
       <div>
-      <div className="Report">
+      <div className="ReportPrisoner">
         <div className = "ReportHeader"> Prisoner #{this.state.pid} </div>
         <br></br>
         <form>
-          <p> Personal Details</p>
-          <table>
+          <p className = "ReportSubheading"> Personal Details</p>
+          <table className = "ReportTable">
           <tbody>
           <tr>
           <td>
@@ -189,7 +190,7 @@ class PrisonerReport extends Component {
             <td>
               <label htmlFor="identifying_mark"> Identifying Mark: </label>
             </td>
-            <td>
+            <td colSpan = '2'>
               <input type="text" id="identifying_mark" value={this.state.identifying_mark} disabled />
             </td>
           </tr>
@@ -197,24 +198,33 @@ class PrisonerReport extends Component {
             <td>
               <label htmlFor="affiliation"> Affiliation: </label>
             </td>
-            <td>
+            <td colSpan = '2'>
               <input type="text" id="affiliation" value={this.state.affiliation} disabled />
             </td>
           </tr>
           </tbody>
           </table>
           <br/>
-          <p> Prison Time Details</p>
-          <table>
+          <p className = "ReportSubheading"> Prison Time Details</p>
+          <table className = "ReportTable">
           <tbody>
           <tr>
-              <td>
+            <td>
+              <label htmlFor="prison_no"> Prison Number: </label>
+            </td>
+            <td>
               <input type="text" id="prison_no" value={this.state.prison_no} disabled />
               </td>
             </tr>
             <tr>
               <td>
+                <label htmlFor="entry_date"> Entry Date: </label>
+              </td>
+              <td>
               <input type="text" id="entry_date" value={this.state.entry_date} disabled />
+              </td>
+              <td>
+              <label htmlFor="sentence"> Sentence (Years): </label>
               </td>
               <td>
               <input type="text" id="sentence" value={this.state.sentence} disabled />
@@ -222,16 +232,29 @@ class PrisonerReport extends Component {
             </tr>
             <tr>
               <td>
+              <label htmlFor="employed_by"> Employer ID: </label> 
+              </td>
+              <td>
               <input type="text" id="employed_by" value={this.state.employed_by} disabled />
               </td>
             </tr>
             </tbody>
           </table>
+          <br/>
+          <p className = "ReportSubheading"> Task Details </p>
           <table id = "chore-section">
+            <tbody>
+            <td>
+            <label htmlFor="chore_name"> Chore </label>
+            </td>
+            <td>
+            <label htmlFor="chore_time" > Chore Time </label> 
+            </td>
+            </tbody>
           </table>
           <br/>
-          <p> Crime History</p>
-          <table>
+          <p className = "ReportSubheading"> Crime History</p>
+          <table className = "ReportTable">
           <tbody>
             <tr>
               <td>
@@ -239,10 +262,18 @@ class PrisonerReport extends Component {
               </td>
             </tr>
           </tbody>
-          </table>
-          <p> Registered Relatives</p>
+          </table >
+          <br/>
+          <p className = "ReportSubheading"> Registered Relatives</p>
           <table id="relative-section">
-
+          <tbody>
+            <td>
+            <label htmlFor="relative_name"> Name </label> 
+            </td>
+            <td>
+            <label htmlFor="relative_relation"> Relation </label> 
+            </td>
+            </tbody>
           </table>
         </form>
         <br/>

@@ -114,13 +114,22 @@ a:hover{
   height: 40px;
   font-size: 15px;
   }
-
-  .Report {
+  .ReportPrisoner {
     background-color: #fefefe;
     position: absolute;
     width: 50%;
-    left: 50%;
-    top: 45%;
+    left: 40.9%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+  }
+  .ReportGuard {
+    background-color: #fefefe;
+    position: absolute;
+    width: 50%;
+    left: 40.9%;
+    top: 46%;
     transform: translate(-50%, -50%);
     padding: 10px;
     text-align: left;
@@ -128,33 +137,62 @@ a:hover{
   .ReportHeader{
     background-color: #29487D;
     color: #FEFEFE;
-    width: 100%;
+    width: 94%;
     height: 45px;
     line-height: 45px;
     font-size: 20px;
     text-align: left;
-    margin-top:-10px;
-    margin-left: -10px;
+    margin-top: 10px;
+    margin-left: 10px;
     padding: 10px;
     font-family: 'Lucida Console', monospace;
   }
-  .Report table {
-    width: 80%;
+    .ReportTable{
+      font-size: 12px;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    .ReportSubheading{
+      margin-left:0%;
+    }
+    .FunctionTable{
+      font-size: 12px;
+      font-family:Arial, Helvetica, sans-serif;
+      align-content: center;
+    }
+  .ReportGuard table {
+    width: 100%;
     text-align: left;
   }
-  .Report label{
-    text-decoration: underline;
-    font-size: 15px;
+  .ReportGuard label{
+    text-decoration: none;
+    font-size: 13px;
   }
 
-  .Report input:disabled{
+  .ReportGuard input:disabled{
     background-color: #FEFEFE;
     border: 0px;
     color: black;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: capitalize;
   }
 
+  .ReportPrisoner table {
+    width: 100%;
+    text-align: left;
+  }
+  .ReportPrisoner label{
+    text-decoration: underline;
+    font-size: 13px;
+  }
+
+  .ReportPrisoner input:disabled{
+    background-color: #FEFEFE;
+    width: 100%;
+    border: 0px;
+    color: black;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

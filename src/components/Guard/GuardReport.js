@@ -11,8 +11,7 @@ class GuardReport extends Component {
     mgr:null,
     mgr_name:null,
     shift_number:null,
-    district:null,
-    city:null
+    location:null
   }
   componentDidMount(){
     //console.log("Hello");
@@ -46,8 +45,7 @@ class GuardReport extends Component {
         mgr:res[0].mgr,
         mgr_name: mgr_name,
         shift_number:shifts,
-        district:res[0].district,
-        city:res[0].city
+        location: res[0].district.concat(', ').concat(res[0].city)
       });
       console.log(this.state);
     }, (error) => {
@@ -57,61 +55,73 @@ class GuardReport extends Component {
   render() {
     return (
       <div>
-      <div className="Report">
+      <div className="ReportGuard">
         <div className = "ReportHeader"> Guard #{this.state.empid} </div>
         <br></br>
         <form>
-          <p> Personal Details</p>
-          <table>
+          <p className = "ReportSubheading"> Personal Details</p>
+          <table className = "ReportTable">
           <tbody>
           <tr>
-          <td colSpan='2'>
+          <td>
           <label htmlFor="first_name"> First Name: </label>
           </td>
           <td colSpan='2'>
           <input type="text" id="first_name" value={this.state.first_name} disabled />
           </td>
-          <td colSpan='2'>
+          <td>
             <label htmlFor="last_name"> Last Name: </label>
           </td>
-          <td colSpan='2'>
+          <td>
             <input type="text" id="last_name" value={this.state.last_name} disabled />
           </td>
           </tr>
           <tr>
-            <td colSpan='2'>
+            <td>
               <label htmlFor="years_of_experience"> Years of Experience: </label>
             </td>
-            <td colSpan='2'>
+            <td>
               <input type="text" id="years_of_experience" value={this.state.years_of_experience} disabled /> 
             </td>
           </tr>
           </tbody>
           </table>
           <br/>
-          <p> Work Details</p>
-          <table>
+          <p className = "ReportSubheading"> Work Details</p>
+          <table className = "ReportTable">
           <tbody>
             <tr>
+            <td>
+              <label htmlFor="prison_no"> Prison Number: </label>
+            </td>
             <td>
               <input type = "text" id = "prison_no" value={this.state.prison_no} disabled />
             </td>
             <td>
-            <input type = "text" id = "district" value={this.state.district} disabled />
+              <label htmlFor="location"> Location: </label>
             </td>
             <td>
-            <input type = "text" id = "city" value={this.state.city} disabled />
+            <input type = "text" id = "location" value={this.state.location} disabled />
             </td>
             </tr>
             <tr>
+            <td>
+              <label htmlFor="mgr"> Mgr ID: </label>
+            </td>
               <td>
                 <input type = "text" id = "mgr" value={this.state.mgr} disabled />
               </td>
+              <td>
+              <label htmlFor="mgr_name"> Mgr Name: </label>
+            </td>
               <td>
                 <input type = "text" id = "mgr_name" value={this.state.mgr_name} disabled />
               </td>
             </tr>
             <tr>
+            <td>
+              <label htmlFor="salary"> Salary: </label>
+            </td>
               <td>
                 <input type = "text" id = "salary" value={this.state.salary} disabled />
               </td>
@@ -119,9 +129,12 @@ class GuardReport extends Component {
             </tbody>
           </table>
           <br/>
-          <table>
+          <table className = "ReportTable">
             <tbody>
               <tr>
+              <td>
+                  <label htmlFor = "shift_number"> Shifts: </label> 
+                </td>
                 <td>
                   <input type = "text" id = "shift_number" value={this.state.shift_number} disabled />
                 </td>

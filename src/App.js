@@ -15,6 +15,17 @@ import WardenPrisonerReportView from './components/Warden/WPrisonerReportView.js
 import WardenGuardReportView from './components/Warden/GuardReportView.js';
 import GuardList from './components/Guard/GuardList.js';
 
+import CWPrisonerListView from './components/Chief Warden/PrisonersListView.js';
+import CWPrisonerReportView from './components/Chief Warden/PrisonerReportView.js';
+
+import CWWardenListView from './components/Chief Warden/WardenListView.js';
+import CWAddWardenForm from './components/Chief Warden/AddWardenForm.js';
+import CWWardenReportView from './components/Chief Warden/WardenReportView';
+
+import CWGuardListView from './components/Chief Warden/GuardListView.js';
+import CWAddGuardForm from './components/Chief Warden/AddGuardForm.js';
+import CWGuardReportView from './components/Chief Warden/GuardReportView.js';
+
 class App extends Component {
   render() {
     return (
@@ -34,6 +45,16 @@ class App extends Component {
       <Route exact path= '/warden/view_prisoner/:id' component = {WardenPrisonerReportView} />
       <Route exact path= '/warden/view_guard/:id' component = {WardenGuardReportView} />
       <Route exact path = '/view_guards' component= {GuardList} />
+
+      <Route exact path = '/chief_warden/view_prisoners' component={CWPrisonerListView} />
+      <Route exact path = '/chief_warden/view_prisoner/:id' component={CWPrisonerReportView} />
+      <Route exact path = '/chief_warden/view_guards' component= {CWGuardListView} />
+      <Route exact path = '/chief_warden/view_guard/:id' component= {CWGuardReportView} />
+      <Route exact path = '/chief_warden/view_wardens' component= {CWWardenListView} />
+      <Route exact path= '/chief_warden/view_warden/:id' component = {CWWardenReportView} />
+      <Route exact path = '/chief_warden/add_guard' component = {CWAddGuardForm} />
+      <Route exact path = '/chief_warden/add_warden' component = {CWAddWardenForm} />
+      
       </div>
       </BrowserRouter>
     );

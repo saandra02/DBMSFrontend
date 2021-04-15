@@ -17,6 +17,7 @@ import GuardList from './components/Guard/GuardList.js';
 
 import CWPrisonerListView from './components/Chief Warden/PrisonersListView.js';
 import CWPrisonerReportView from './components/Chief Warden/PrisonerReportView.js';
+import CWAddPrisonerForm from './components/Chief Warden/AddPrisonerForm.js';
 
 import CWWardenListView from './components/Chief Warden/WardenListView.js';
 import CWAddWardenForm from './components/Chief Warden/AddWardenForm.js';
@@ -48,11 +49,14 @@ class App extends Component {
 
       <Route exact path = '/chief_warden/view_prisoners' component={CWPrisonerListView} />
       <Route exact path = '/chief_warden/view_prisoner/:id' component={CWPrisonerReportView} />
+      <Route exact path = '/chief_warden/add_prisoner' component={CWAddPrisonerForm} />
+      
       <Route exact path = '/chief_warden/view_guards' component= {CWGuardListView} />
       <Route exact path = '/chief_warden/view_guard/:id' component= {CWGuardReportView} />
+      <Route exact path = '/chief_warden/add_guard' component = {CWAddGuardForm} />
+      
       <Route exact path = '/chief_warden/view_wardens' component= {CWWardenListView} />
       <Route exact path= '/chief_warden/view_warden/:id' component = {CWWardenReportView} />
-      <Route exact path = '/chief_warden/add_guard' component = {CWAddGuardForm} />
       <Route exact path = '/chief_warden/add_warden' component = {CWAddWardenForm} />
       
       </div>

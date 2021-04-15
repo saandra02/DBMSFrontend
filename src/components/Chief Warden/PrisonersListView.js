@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ChiefWardenNavBar from './ChiefWardenNavBar';
+import {FaPlus} from "react-icons/fa";
+import {IconContext} from "react-icons";
 
 class CWPrisonerListView extends Component {
   state = {
@@ -24,9 +26,6 @@ class CWPrisonerListView extends Component {
       console.log(error);
     });
   }
-  ViewReport = () =>  {
-    console.log("Hello");
-  }
   renderTableData = () => {
       for(var i=0; i<this.state.prisoners.length; i++){
           var table = document.getElementById("prisoners");
@@ -39,12 +38,24 @@ class CWPrisonerListView extends Component {
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_prisoner/' + this.state.prisoners[i].pid +'"})()> Report </button>' ;
       }
   } 
+
+  HandleClick = () => {
+    window.location.href = '/chief_warden/add_prisoner';
+  }
+
   render() {
     return (
     <div>
     <ChiefWardenNavBar />
     <div className="List">
-    <div className="ListHeader"> Prisoners List</div>
+    <div className="ListHeader"> 
+    Prisoners List
+    <IconContext.Provider value={{ style: {fontSize: '25px', color: "#FEFEFE", align:'right'}}}>
+        <span className='add-icon' onClick={this.HandleClick}> 
+         <FaPlus /> 
+         </span>
+    </IconContext.Provider>
+    </div>
     <table id='prisoners' className='list-table'>
     <tr>
       <th> Prisoner ID </th>

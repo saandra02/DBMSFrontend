@@ -26,6 +26,9 @@ class CWWardenList extends Component {
       console.log(error);
     });
   }
+  func1() {
+    console.log("In function 1 ");
+  }
   renderTableData = () => {
       for(var i=0; i<this.state.guards.length; i++){
           var table = document.getElementById("guards");
@@ -33,9 +36,11 @@ class CWWardenList extends Component {
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
           cell1.innerHTML = this.state.guards[i].empid;
           cell2.innerHTML = this.state.guards[i].first_name.concat(" ").concat(this.state.guards[i].last_name);
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_warden/' + this.state.guards[i].empid +'"})()> Report </button>' ;
+          cell4.innerHTML = '<button class="view-button"> Delete </button>' ;
       }
   } 
   HandleClick = () => {
@@ -43,7 +48,8 @@ class CWWardenList extends Component {
   }
   render() {
     return (
-    <div> <ChiefWardenNavBar/> 
+    <div> 
+    <ChiefWardenNavBar/> 
     <div className="List">
     <div className="ListHeader"> 
       Warden List
@@ -57,7 +63,8 @@ class CWWardenList extends Component {
     <tr>
       <th> Warden ID </th>
       <th> Warden Name</th>
-      <th> View Report</th>
+      <th> View</th>
+      <th> Delete</th>
      </tr>
     </table>
     </div>

@@ -1,19 +1,96 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import ChiefWardenNavBar from './ChiefWardenNavBar';
 
 class AddGuardForm extends Component {
   state = {
-    empid:null,
-    first_name:null,
-    last_name:null,
-    salary:null,
-    years_of_experience:null,
-    mgr:null,
+    empid: null, 
+    password: null,
+    first_name: null,
+    last_name: null,
+    y_o_e: null, 
+    prison_no: null, 
+    location: null, 
+    mgr: null, 
+    salary: null
   }
   componentDidMount(){
-      console.log("Hello");
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var url = '/warden_chief_warden/'.concat(user.empid);
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'get',
+      url: url,
+      headers: {'Authorization': header}
+    }).then((response) => {
+        var key = "Chief Warden ".concat(user.empid);
+        var res = JSON.parse(response.data[key]);
+        var length = res.length;
+        var mgrs = [];
+        var select = document.getElementById('mgr');
+        for(var i=0; i<length; i++){
+          var mgr = {};
+          mgr.empid = res[i].empid;
+          mgr.name = "Warden #".concat(res[i].empid);
+          mgrs[i] = mgr;
+          select.options.add(new Option(mgr.name, mgr.empid));
+        }
+        console.log(mgrs);
+        this.setState({
+          prison_no: res[0].prison_no,
+          location: res[0].city.concat(" ").concat(res[0].district)
+        })
+    }, (error) => {
+      console.log(error);
+    });
+    
   } 
+
+  HandleSubmit = (e) =>{
+    e.preventDefault();
+    var empid = document.getElementById("empid").value;
+    var password = document.getElementById("password").value;
+    var first_name = document.getElementById("first_name").value;
+    var last_name = document.getElementById("last_name").value;
+    var y_o_e = document.getElementById("years_of_experience").value;
+    var sal = document.getElementById("salary").value;
+    var mgr = document.getElementById('mgr').value;
+    this.setState({
+      empid: empid,
+      password: password,
+      first_name: first_name,
+      last_name: last_name,
+      y_o_e: y_o_e,
+      salary: sal, 
+      mgr: mgr
+    }, () => this.AddGuard());
+  }
+
+  AddGuard = () => {
+    var url = '/official/'.concat(this.state.empid);
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'post',
+      url: url,
+      headers: {'Authorization': header},
+      data: {
+        password: this.state.password,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        salary: this.state.salary,
+        years_of_experience: this.state.y_o_e,
+        type: 'Guard',
+        mgr: this.state.mgr,
+        prison_no: this.state.prison_no
+      }
+    }).then((response) => {
+      alert("Successfully added!");
+      window.location.href = '/chief_warden/view_guards';
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -25,6 +102,20 @@ class AddGuardForm extends Component {
           <p className = "ReportSubheading"> Personal Details</p>
           <table className = "ReportTable">
           <tbody>
+          <tr>
+            <td>
+              <label htmlFor="empid"> Employee ID: </label>
+            </td>
+            <td colSpan='2'>
+              <input type="number" id="empid" />
+            </td>
+            <td>
+              <label htmlFor="password"> Password </label>
+            </td>
+            <td colSpan='2'>
+              <input type="password" id="password" />
+            </td>
+          </tr>
           <tr>
           <td>
           <label htmlFor="first_name"> First Name: </label>
@@ -86,7 +177,10 @@ class AddGuardForm extends Component {
           </table>
           <br/>
         </form>
-        <br/>
+        <br/> <br/> <br/>
+          <div className="add-form-button">
+          <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
+          </div>
       </div>
       </div>
     );

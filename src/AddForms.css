@@ -13,3 +13,7 @@ input[type=number] {
 .add-form-button{
   text-align: center;
 }
+
+.Add{
+  margin-top: -500px;
+}

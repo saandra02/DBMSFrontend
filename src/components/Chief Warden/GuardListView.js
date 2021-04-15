@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {FaPlus} from "react-icons/fa";
 import {IconContext} from "react-icons";
+import ChiefWardenNavBar from './ChiefWardenNavBar';
 
 class CWGuardList extends Component {
   state = {
@@ -42,6 +43,8 @@ class CWGuardList extends Component {
   } 
   render() {
     return (
+    <div>
+      <ChiefWardenNavBar/>
     <div className="List">
     <div className="ListHeader"> 
         Guard List 
@@ -58,6 +61,7 @@ class CWGuardList extends Component {
       <th> View Report</th>
      </tr>
     </table>
+    </div>
     </div>
     );
   }

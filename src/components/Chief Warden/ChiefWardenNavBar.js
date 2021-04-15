@@ -8,7 +8,7 @@ class ChiefWardenNavBar extends Component{
     }
     render(){
         return (
-            <div className="navbar">
+            <div>
                 <ul className="navbar">
                     <li>  <NavLink to="/guard" className="sidebarlink">Profile</NavLink></li>
                     <li>  <NavLink to="/chief_warden/view_prisoners" className="sidebarlink">View Prisoners</NavLink></li>

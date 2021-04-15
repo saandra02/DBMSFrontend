@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChiefWardenNavBar from './ChiefWardenNavBar';
-//import axios from 'axios';
+import axios from 'axios';
 
 class CWAddPrisonerForm extends Component {
   state = {
@@ -20,12 +20,59 @@ class CWAddPrisonerForm extends Component {
     crime:null,
   }
   componentDidMount(){
-  } 
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var url = '/prisoner_form_details/'.concat(user.prison_no);
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'get',
+      url: url,
+      headers: {'Authorization': header}
+    }).then((response) => {
+        var key = "Prison ".concat(user.prison_no);
+        var res = JSON.parse(response.data[key]);
+        console.log(res);
+        var length = res.length;
+        var prisoners = []
+        var crimes = []
+        for(var i=0; i<length; i++){
+          var crime = {};
+          crime.cid = res[i].cid;
+          crime.cname = res[i].c_name;
+          crimes[i] = crime;
+          prisoners[i] = res[i].pid;
+        }
+        var prisoners_unique = [...new Set(prisoners)];
+        var crimes_unique = crimes.filter((crimes, index, self) =>
+        index === self.findIndex((t) => (t.cid === crimes.cid)));
+
+        var p_length = prisoners_unique.length;
+        var c_length = crimes_unique.length;
+
+        var p_select= document.getElementById('prisoners');
+        var c_select = document.getElementById('crimes');
+        for(var j=0; j<p_length; j++){
+          var pr = {};
+          pr.pid = prisoners_unique[j];
+          pr.name = "Prisoner #".concat(prisoners_unique[j]);
+          p_select.options.add(new Option(pr.name, pr.pid));
+        }
+        for(var k=0; k<c_length; k++){
+          c_select.options.add(new Option(crimes_unique[k].cname, crimes_unique[k].cid));
+        }
+     
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  
+  HandleSubmit = (e) => {
+    console.log("Adding prisoner...");
+  }
   render() {
     return (
       <div>
       <ChiefWardenNavBar />
-      <div className="ReportPrisoner Add">
+      <div className="ReportPrisoner Add-Prisoner">
         <div className = "ReportHeader"> Add New Prisoner </div>
         <br></br>
         <form>
@@ -110,6 +157,8 @@ class CWAddPrisonerForm extends Component {
               <label htmlFor="affiliation"> Affiliation: </label>
             </td>
             <td colSpan = '2'>
+            <select id='prisoners' multiple>
+            </select>
             </td>
           </tr>
           </tbody>
@@ -139,13 +188,21 @@ class CWAddPrisonerForm extends Component {
           <table className = "ReportTable">
           <tbody>
             <tr>
+            <td>
+              <label htmlFor='crimes'> Crimes Committed: </label>
+            </td>
+            </tr>
+            <tr>
               <td>
-              <input type="text" id="crime" value={this.state.crime} disabled /> 
+              <select id='crimes' multiple>
+              </select> 
               </td>
             </tr>
           </tbody>
           </table>
-          <br/>
+          <div className="add-form-button">
+          <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
+          </div>
         </form>
         <br/>
       </div>

@@ -149,6 +149,16 @@ a:hover{
     padding: 10px;
     text-align: left;
   }
+  .BusinessReport {
+    background-color: #fefefe;
+    position: absolute;
+    width: 50%;
+    left: 40.9%;
+    top: 41%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+  }
   .ReportHeader{
     background-color: #29487D;
     color: #FEFEFE;

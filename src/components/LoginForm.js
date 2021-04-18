@@ -88,7 +88,11 @@ class LoginForm extends Component {
           password: this.state.password
         }
       }).then((response) => {
+        var key = "User ".concat(this.state.username);
+        console.log(response);
+        //console.log((JSON.parse(response.data[key]))[0].pid);
         sessionStorage.setItem("access_token",response.data.access_token);
+        sessionStorage.setItem("user", JSON.stringify((JSON.parse(response.data[key]))[0]));
         window.location.href = '/business';
       }, (error) => {
         console.log(error);

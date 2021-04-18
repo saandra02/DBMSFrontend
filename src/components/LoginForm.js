@@ -57,6 +57,8 @@ class LoginForm extends Component {
           window.location.href = '/warden';
         } else if(user.type==="Chief Warden"){
           window.location.href = '/chiefwarden';
+        } else if(user.type==="Admin"){
+          window.location.href = '/admin';
         }
       }, (error) => {
         console.log(error);

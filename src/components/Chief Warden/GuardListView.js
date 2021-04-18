@@ -33,9 +33,11 @@ class CWGuardList extends Component {
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
           cell1.innerHTML = this.state.guards[i].empid;
           cell2.innerHTML = this.state.guards[i].first_name.concat(" ").concat(this.state.guards[i].last_name);
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_guard/' + this.state.guards[i].empid +'"})()> Report </button>' ;
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/delete_guard/' + this.state.guards[i].empid +'"})()> Delete </button>' ;
       }
   }
   HandleClick = () => {
@@ -59,6 +61,7 @@ class CWGuardList extends Component {
       <th> Guard ID </th>
       <th> Guard Name</th>
       <th> View Report</th>
+      <th> Delete</th>
      </tr>
     </table>
     </div>

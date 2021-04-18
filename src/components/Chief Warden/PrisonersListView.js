@@ -33,9 +33,11 @@ class CWPrisonerListView extends Component {
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
           cell1.innerHTML = this.state.prisoners[i].pid;
           cell2.innerHTML = this.state.prisoners[i].first_name.concat(" ").concat(this.state.prisoners[i].last_name);
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_prisoner/' + this.state.prisoners[i].pid +'"})()> Report </button>' ;
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/delete_prisoner/' + this.state.prisoners[i].pid +'"})()> Delete </button>'
       }
   } 
 
@@ -61,6 +63,7 @@ class CWPrisonerListView extends Component {
       <th> Prisoner ID </th>
       <th> Prisoner Name</th>
       <th> View Report</th>
+      <th> Delete </th>
      </tr>
     </table>
     </div>

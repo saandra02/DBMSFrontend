@@ -21,3 +21,22 @@ input[type=number] {
 .Add-Prisoner{
   margin-top: 5%;
 }
+
+.delete-form-button{
+  text-align: right;
+}
+
+.DeleteMessage{
+  font-size: 20px;
+}
+
+.DeleteButton{
+  background-color: #29487D;
+  color: #FEFEFE;
+  text-align: center;
+  height: 40px;
+  width: 80px;
+  font-size: 15px;
+  margin: 5px;
+  border: 0px;
+}

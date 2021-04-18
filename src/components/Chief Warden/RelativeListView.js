@@ -36,7 +36,7 @@ class CWRelativeList extends Component {
           cell1.innerHTML = this.state.relatives[i].rid;
           cell2.innerHTML = this.state.relatives[i].first_name.concat(" ").concat(this.state.relatives[i].last_name);
           cell3.innerHTML = "Prisoner #".concat(this.state.relatives[i].pid);
-          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_business/' + this.state.relatives[i].rid +'"})()> Report </button>';
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_relative/' + this.state.relatives[i].rid +'"})()> Report </button>';
       }
   }
   HandleClick = () => {

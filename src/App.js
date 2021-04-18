@@ -59,6 +59,7 @@ import AdminGuardListView from './components/Admin/GuardListView.js';
 import AdminGuardReportView from './components/Admin/GuardReportView.js';
 import CWBusinessReportView from './components/Chief Warden/BusinessReportView.js';
 import CWRelativeReportView from './components/Chief Warden/RelativeReportView.js';
+import CWAddBusinessForm from './components/Chief Warden/AddBusinessForm.js';
 
 class App extends Component {
   render() {
@@ -107,6 +108,7 @@ class App extends Component {
       <Route exact path = '/chief_warden/view_relatives' component={CWRelativeList} />
 
       <Route exact path = '/chief_warden/view_business/:id' component={CWBusinessReportView} />
+      <Route exact path = '/chief_warden/add_business' component={CWAddBusinessForm} />
       <Route exact path = '/chief_warden/view_relative/:id' component={CWRelativeReportView} />
 
       <Route exact path='/chief_warden/add_chore' component={AddChoreForm} />

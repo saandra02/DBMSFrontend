@@ -39,7 +39,7 @@ class CWBusinessList extends Component {
       }
   }
   HandleClick = () => {
-    window.location.href = '/chief_warden/add_guard';
+    window.location.href = '/chief_warden/add_business';
   } 
   render() {
     return (

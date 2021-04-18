@@ -11,7 +11,7 @@ class RelativeNavBar extends Component{
             <div className="navbar">
                 <ul className="navbar">
                     <li>  <NavLink to="/relative" className="sidebarlink">Profile</NavLink></li>
-                    <li> <NavLink to="/" className="sidebarlink"> Schedule a Visit</NavLink> </li>
+                    <li> <NavLink to="/add_visit" className="sidebarlink"> Schedule a Visit</NavLink> </li>
                     <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>
             </div>

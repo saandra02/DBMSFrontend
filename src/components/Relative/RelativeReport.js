@@ -8,8 +8,8 @@ class RelativeReport extends Component {
     last_name: null,
     pid: null,
     relation: null,
-    prison_number: null,
-    appointment_date: null
+    prison_no: null,
+    appointment_date: null,
   }
   componentDidMount(){
     var id = this.props.id;
@@ -33,37 +33,53 @@ class RelativeReport extends Component {
         last_name: res[0].last_name,
         pid: res[0].pid,
         relation: res[0].relation,
-        prison_number: res[0].prison_no,
-        appointment_date: appointment_date
+        prison_no: res[0].prison_no,
+        appointment_date: appointment_date,
       })
       console.log(this.state);
+      this.renderAppointments();
       
     }, (error) => {
       console.log(error);
     });
   }
+  renderAppointments = () => {
+    var table = document.getElementById("appointment-section");
+    var length = this.state.appointment_date.length;
+    table.className = "FunctionTable";
+    for(var i = 0; i < length; i++)
+    {
+      var row = table.insertRow(i);
+      var cell1 = row.insertCell(0);
+      cell1.innerHTML = this.state.appointment_date[i];
+    }
+  }
   render() {
     return (
       <div>
-      <div className="Report">
+      <div className="RelativeReport">
         <div className = "ReportHeader"> Relative #{this.state.rid} </div>
         <br></br>
         <form>
+          <p className = "ReportSubheading"> Relative Details</p>
           <table>
           <tbody>
           <tr>
           <td>
-          <label htmlFor="first_name"> Name: </label>
+          <label htmlFor="first_name"> First Name: </label>
           </td>
           <td>
-          <input type="text" id="first_name" value={this.state.name} disabled />
-          </td>
-          <td>
-          </td>
-          <td>
+          <input type="text" id="first_name" value={this.state.first_name} disabled />
           </td>
           </tr>
-
+          <tr>
+          <td>
+          <label htmlFor="last_name"> Last Name: </label>
+          </td>
+          <td>
+          <input type="text" id="last_name" value={this.state.last_name} disabled />
+          </td>
+          </tr>
           <tr>
             <td>
               <label htmlFor="pid"> Related to: Prisoner # </label>
@@ -71,6 +87,8 @@ class RelativeReport extends Component {
             <td>
               <input type="text" id="pid" value={this.state.pid} disabled /> 
             </td>
+          </tr>
+          <tr>
             <td>
               <label htmlFor="relation"> Relation: </label>
             </td>
@@ -78,9 +96,25 @@ class RelativeReport extends Component {
             <input type="text" id="relation" value={this.state.relation} disabled />
             </td>
           </tr>
+          <tr>
+            <td>
+              <label htmlFor="prison_no"> Prison Number </label>
+            </td>
+            <td>
+              <input type="text" id="prison_no" value={this.state.prison_no} disabled /> 
+            </td>
+          </tr>
           </tbody>
           </table>
           <br/>
+          <p className = "ReportSubheading"> Upcoming and Past Vists </p>
+          <table id = "appointment-section">
+            <tbody>
+            <td>
+            <label htmlFor="appointment_time" > Appointment Time </label> 
+            </td>
+            </tbody>
+          </table>
         </form>
         <br/>
       </div>

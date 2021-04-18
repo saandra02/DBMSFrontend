@@ -17,6 +17,7 @@ import WardenPrisonerReportView from './components/Warden/WPrisonerReportView.js
 import WardenGuardReportView from './components/Warden/GuardReportView.js';
 import GuardList from './components/Guard/GuardList.js';
 import UpdateRequirements from './components/Business/UpdateRequirements.js';
+import AddVisits from './components/Relative/AddVisit.js';
 
 import CWPrisonerListView from './components/Chief Warden/PrisonersListView.js';
 import CWPrisonerReportView from './components/Chief Warden/PrisonerReportView.js';
@@ -75,6 +76,7 @@ class App extends Component {
       <Route exact path= '/warden/view_guard/:id' component = {WardenGuardReportView} />
       <Route exact path = '/view_guards' component= {GuardList} />
       <Route exact path = '/update_requirements' component= {UpdateRequirements} />
+      <Route exact path = '/add_visit' component={AddVisits} />
 
 
       <Route exact path = '/chief_warden/view_prisoners' component={CWPrisonerListView} />

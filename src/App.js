@@ -27,6 +27,14 @@ import CWGuardListView from './components/Chief Warden/GuardListView.js';
 import CWAddGuardForm from './components/Chief Warden/AddGuardForm.js';
 import CWGuardReportView from './components/Chief Warden/GuardReportView.js';
 
+import CWChoreList from './components/Chief Warden/ChoreListView.js';
+import CWFacilityList from './components/Chief Warden/FacilityListView.js';
+import CWBusinessList from './components/Chief Warden/BusinessListView.js';
+import AddChoreForm from './components/Chief Warden/AddChoreForm.js';
+import AddFacilityForm from './components/Chief Warden/AddFacilityForm.js';
+import CWRelativeList from './components/Chief Warden/RelativeListView.js';
+import CWWardenDeleteConfirm from './components/Chief Warden/WardenDeleteConfirm.js';
+
 class App extends Component {
   render() {
     return (
@@ -57,7 +65,16 @@ class App extends Component {
       
       <Route exact path = '/chief_warden/view_wardens' component= {CWWardenListView} />
       <Route exact path= '/chief_warden/view_warden/:id' component = {CWWardenReportView} />
+      <Route exact path= '/chief_warden/delete_warden/:id' component = {CWWardenDeleteConfirm} />
       <Route exact path = '/chief_warden/add_warden' component = {CWAddWardenForm} />
+
+      <Route exact path = '/chief_warden/view_chores' component = {CWChoreList} />
+      <Route exact path = '/chief_warden/view_facilities' component={CWFacilityList} />
+      <Route exact path = '/chief_warden/view_businesses' component={CWBusinessList} />
+      <Route exact path = '/chief_warden/view_relatives' component={CWRelativeList} />
+
+      <Route exact path='/chief_warden/add_chore' component={AddChoreForm} />
+      <Route exact path='/chief_warden/add_facility' component={AddFacilityForm} />
       
       </div>
       </BrowserRouter>

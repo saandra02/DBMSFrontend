@@ -23,6 +23,9 @@ class CWAddPrisonerForm extends Component {
     var user = JSON.parse(sessionStorage.getItem("user"));
     var url = '/prisoner_form_details/'.concat(user.prison_no);
     var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    this.setState({
+      prison_no: user.prison_no
+    });
     axios({
       method: 'get',
       url: url,
@@ -66,7 +69,74 @@ class CWAddPrisonerForm extends Component {
   }
   
   HandleSubmit = (e) => {
+    e.preventDefault();
     console.log("Adding prisoner...");
+    var pid = document.getElementById("pid").value;
+    var password = document.getElementById("password").value;
+    var first_name = document.getElementById("first_name").value;
+    var last_name = document.getElementById("last_name").value;
+    var age = document.getElementById("age").value;
+    var ht_in_m = document.getElementById("ht_in_m").value;
+    var wt_in_kg = document.getElementById("wt_in_kg").value;
+    var eye_colour = document.getElementById("eye_colour").value;
+    var hair_colour = document.getElementById("hair_colour").value;
+    var entry_date = document.getElementById("entry_date").value;
+    var c_select = document.getElementById("crimes");
+    var crime = Array.from(c_select.selectedOptions).map(v=>v.value);
+    var p_select = document.getElementById('prisoners');
+    var affiliation = Array.from(p_select.selectedOptions).map(v=>v.value);
+    var id_marks = document.getElementById('identifying_mark').value.split(',');
+
+    console.log(crime);
+
+    this.setState({
+        pid:pid,
+        password: password,
+        first_name:first_name, 
+        last_name:last_name,
+        age: age,
+        entry_date: entry_date,
+        ht_in_m: ht_in_m,
+        wt_in_kg: wt_in_kg,
+        eye_colour: eye_colour,
+        hair_colour: hair_colour,
+        identifying_mark:id_marks,
+        affiliation:affiliation,
+        crime:crime,
+    }, ()=>this.AddPrisoner());
+  }
+
+  AddPrisoner = () => {
+    var url = '/prisoner/'.concat(this.state.pid);
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+      method: 'post',
+      url: url,
+      headers: {'Authorization': header},
+      data: {
+        password: this.state.password,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        age: this.state.age,
+        ht_in_m: this.state.ht_in_m,
+        wt_in_kg: this.state.wt_in_kg,
+        hair_colour: this.state.hair_colour,
+        eye_colour: this.state.eye_colour,
+        fingerprint: null,
+        visits_made: 5,
+        prison_no: this.state.prison_no,
+        employed_by:null,
+        entry_date: this.state.entry_date,
+        cid: this.state.crime,
+        pid: this.state.affiliation,
+        identifying_mark: this.state.identifying_mark
+      }
+    }).then((response) => {
+      alert("Successfully added!");
+      window.location.href = '/chief_warden/view_prisoners';
+    }, (error) => {
+      console.log(error);
+    });
   }
   render() {
     return (
@@ -90,7 +160,7 @@ class CWAddPrisonerForm extends Component {
             <label htmlFor="password"> Password: </label>
           </td>
           <td>
-            <input type="text" id="password"/>
+            <input type="password" id="password"/>
           </td>
           </tr>
           <tr>

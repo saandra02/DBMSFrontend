@@ -81,10 +81,12 @@ class App extends Component {
 
       <Route exact path = '/chief_warden/view_prisoners' component={CWPrisonerListView} />
       <Route exact path = '/chief_warden/view_prisoner/:id' component={CWPrisonerReportView} />
+      <Route exact path= '/chief_warden/delete_prisoner/:id' component = {CWPrisonerDeleteConfirm} />
       <Route exact path = '/chief_warden/add_prisoner' component={CWAddPrisonerForm} />
       
       <Route exact path = '/chief_warden/view_guards' component= {CWGuardListView} />
       <Route exact path = '/chief_warden/view_guard/:id' component= {CWGuardReportView} />
+      <Route exact path= '/chief_warden/delete_guard/:id' component = {CWGuardDeleteConfirm} />
       <Route exact path = '/chief_warden/add_guard' component = {CWAddGuardForm} />
       
       <Route exact path = '/chief_warden/view_wardens' component= {CWWardenListView} />
@@ -93,11 +95,13 @@ class App extends Component {
       <Route exact path = '/chief_warden/add_warden' component = {CWAddWardenForm} />
 
       <Route exact path = '/chief_warden/view_chores' component = {CWChoreList} />
+      <Route exact path = '/chief_warden/view_chore_assignments' component = {CWChoreAssignments} />
       <Route exact path = '/chief_warden/view_facilities' component={CWFacilityList} />
       <Route exact path = '/chief_warden/view_businesses' component={CWBusinessList} />
       <Route exact path = '/chief_warden/view_relatives' component={CWRelativeList} />
 
       <Route exact path='/chief_warden/add_chore' component={AddChoreForm} />
+      <Route exact path = '/chief_warden/add_chore_assignment' component = {AddChoreAssignment} />
       <Route exact path='/chief_warden/add_facility' component={AddFacilityForm} />
 
       <Route exact path = '/shift/' component = {ShiftView} />

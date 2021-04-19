@@ -15,6 +15,7 @@ class CWAddPrisonerForm extends Component {
     eye_colour: null,
     hair_colour: null,
     prison_no: null,
+    fingerprint: null,
     identifying_mark:null,
     affiliation:null,
     crime:null,
@@ -81,6 +82,7 @@ class CWAddPrisonerForm extends Component {
     var eye_colour = document.getElementById("eye_colour").value;
     var hair_colour = document.getElementById("hair_colour").value;
     var entry_date = document.getElementById("entry_date").value;
+    var fingerprint = document.getElementById("fingerprint").value;
     var c_select = document.getElementById("crimes");
     var crime = Array.from(c_select.selectedOptions).map(v=>v.value);
     var p_select = document.getElementById('prisoners');
@@ -100,6 +102,7 @@ class CWAddPrisonerForm extends Component {
         wt_in_kg: wt_in_kg,
         eye_colour: eye_colour,
         hair_colour: hair_colour,
+        fingerprint: fingerprint,
         identifying_mark:id_marks,
         affiliation:affiliation,
         crime:crime,
@@ -122,7 +125,7 @@ class CWAddPrisonerForm extends Component {
         wt_in_kg: this.state.wt_in_kg,
         hair_colour: this.state.hair_colour,
         eye_colour: this.state.eye_colour,
-        fingerprint: null,
+        fingerprint: this.state.fingerprint,
         visits_made: 5,
         prison_no: this.state.prison_no,
         employed_by:null,
@@ -212,6 +215,16 @@ class CWAddPrisonerForm extends Component {
             </td>
             <td>
               <input type="number" id="age"/>
+            </td>
+            <td>
+              <label htmlFor="fingerprint"> Fingerprint: </label>
+            </td>
+            <td>
+              <select id="fingerprint">
+              <option value="Arch"> Arch </option>
+              <option value="Loop"> Loop </option>
+              <option value="Whorl"> Whorl</option>
+              </select>
             </td>
           </tr>
           <tr>

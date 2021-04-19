@@ -21,7 +21,7 @@ class ChiefWardenNavBar extends Component{
                     <li> <NavLink to="/chief_warden/view_chore_assignments" className="sidebarlink"> Assign Chores </NavLink></li>
                     <li> <NavLink to="/chief_warden/view_facilities" className="sidebarlink"> View Facilities </NavLink></li>
                     <br/>
-                    <li> <NavLink to="/" className="sidebarlink"> Visit History </NavLink></li>
+                    <li> <NavLink to="/chief_warden/visit_sheet" className="sidebarlink"> Visit History </NavLink></li>
                     <li> <NavLink to="/" className="sidebarlink"> Expense Report </NavLink></li>
                     <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>

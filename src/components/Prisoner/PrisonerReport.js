@@ -14,6 +14,7 @@ class PrisonerReport extends Component {
     prison_no: null,
     employed_by:null,
     sentence:null,
+    fingerprint: null,
     identifying_mark:null,
     affiliation:null,
     crime:null,
@@ -86,6 +87,7 @@ class PrisonerReport extends Component {
         prison_no: res[0].prison_no,
         employed_by: res[0].employed_by,
         sentence: res[0]['sum(c_years)'],
+        fingerprint: res[0].fingerprint,
         identifying_mark:id_marks_unique,
         affiliation:affiliations_unique,
         crime:crimes_unique,
@@ -184,6 +186,13 @@ class PrisonerReport extends Component {
             </td>
             <td>
               <input type="text" id="age" value={this.state.age} disabled />
+            </td>
+
+            <td>
+              <label htmlFor="fingerprint"> Fingerprint: </label>
+            </td>
+            <td>
+              <input type="text" id="fingerprint" value={this.state.fingerprint} disabled />
             </td>
           </tr>
           <tr>

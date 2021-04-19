@@ -33,10 +33,12 @@ class CWRelativeList extends Component {
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
           cell1.innerHTML = this.state.relatives[i].rid;
           cell2.innerHTML = this.state.relatives[i].first_name.concat(" ").concat(this.state.relatives[i].last_name);
           cell3.innerHTML = "Prisoner #".concat(this.state.relatives[i].pid);
           cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_relative/' + this.state.relatives[i].rid +'"})()> Report </button>';
+          cell5.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/delete_relative/' + this.state.relatives[i].rid +'"})()> Delete </button>';
       }
   }
   HandleClick = () => {
@@ -61,6 +63,7 @@ class CWRelativeList extends Component {
       <th> Name </th>
       <th> Related To</th>
       <th> View Details</th>
+      <th> Delete</th>
      </tr>
     </table>
     </div>

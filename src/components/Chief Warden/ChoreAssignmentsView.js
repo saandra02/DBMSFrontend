@@ -26,15 +26,19 @@ class CWChoreAssignments extends Component {
     });
   }
   renderTableData = () => {
+    var chores = this.state.chores;
+    sessionStorage.setItem("chores", JSON.stringify(chores));
       for(var i=0; i<this.state.chores.length; i++){
           var table = document.getElementById("chores");
           var row = table.insertRow(i+1);
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
           cell1.innerHTML = this.state.chores[i].pid;
           cell2.innerHTML = this.state.chores[i].chore_name;
           cell3.innerHTML = this.state.chores[i].chore_time;
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/delete_chore_assignment/' + i + '"})()> Delete </button>';
       }
   }
   HandleClick = () => {
@@ -58,6 +62,7 @@ class CWChoreAssignments extends Component {
       <th> Prisoner ID </th>
       <th> Chore Name</th>
       <th> Chore Time</th>
+      <th> Remove </th>
      </tr>
     </table>
     </div>

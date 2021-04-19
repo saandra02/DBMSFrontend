@@ -73,7 +73,7 @@ pid: this.state.user_id,
 }
 }).then((response) => {
 alert("Constraint successfully changed");
-window.location.href = '/chief_warden/view_prisoners'; //change this
+window.location.href = '/chief_warden/view_prisoners'; 
 }, (error) => {
 console.log(error);
 });

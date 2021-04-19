@@ -32,10 +32,10 @@ class CWBusinessList extends Component {
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3);
-          cell1.innerHTML = this.state.business[i].bname;
-          cell2.innerHTML = this.state.business[i].number_required;
-          cell3.innerHTML = this.state.business[i].number_employed;
-          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_business/' + this.state.business[i].bid +'"})()> Report </button>';
+          cell1.innerHTML = this.state.business[i].bid;
+          cell2.innerHTML = this.state.business[i].bname;
+          cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/view_business/' + this.state.business[i].bid +'"})()> Report </button>';
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/chief_warden/delete_business/' + this.state.business[i].bid +'"})()> Delete </button>';
       }
   }
   HandleClick = () => {
@@ -56,10 +56,10 @@ class CWBusinessList extends Component {
     </div>
     <table id="chores" className='list-table'>
     <tr>
+      <th> Business ID </th>
       <th> Business Name </th>
-      <th> No. Required</th>
-      <th> No. Employed</th>
       <th> View Details</th>
+      <th> Delete</th>
      </tr>
     </table>
     </div>

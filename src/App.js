@@ -60,6 +60,8 @@ import AdminGuardReportView from './components/Admin/GuardReportView.js';
 import CWBusinessReportView from './components/Chief Warden/BusinessReportView.js';
 import CWRelativeReportView from './components/Chief Warden/RelativeReportView.js';
 import CWAddBusinessForm from './components/Chief Warden/AddBusinessForm.js';
+import CWBusinessDeleteConfirm from './components/Chief Warden/BusinessDeleteConfirm.js';
+import AddRelativeForm from './components/Chief Warden/AddRelativeForm.js';
 
 class App extends Component {
   render() {
@@ -109,7 +111,9 @@ class App extends Component {
 
       <Route exact path = '/chief_warden/view_business/:id' component={CWBusinessReportView} />
       <Route exact path = '/chief_warden/add_business' component={CWAddBusinessForm} />
+      <Route exact path= '/chief_warden/delete_business/:id' component = {CWBusinessDeleteConfirm} />
       <Route exact path = '/chief_warden/view_relative/:id' component={CWRelativeReportView} />
+      <Route exact path = '/chief_warden/add_relative' component={AddRelativeForm} />
 
       <Route exact path='/chief_warden/add_chore' component={AddChoreForm} />
       <Route exact path = '/chief_warden/add_chore_assignment' component = {AddChoreAssignment} />

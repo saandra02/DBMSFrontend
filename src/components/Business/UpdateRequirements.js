@@ -68,7 +68,7 @@ class UpdateRequirements extends Component {
         new_requirement: this.state.new_requirement,
       }
     }).then((response) => {
-      alert("Successfully added!");
+      alert("Constraint successfully changed");
       window.location.href = '/update_requirements';
     }, (error) => {
       console.log(error);

@@ -49,39 +49,39 @@ a {
   text-decoration: none;
   display: block;
 }
-.navbar{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 15%; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 50; /* Stay at the top */
+div.navbar{
+  /* list-style-type: none; */
+  height: 740px;  
+  width: 210px;
+  /* 
+  position: -webkit-sticky; 
+  position: sticky;
+  z-index: -1; 
+  top: 0; 
   left: 0;
   background-color: #8EA2BD; 
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  overflow-x: hidden;  */
 }
-/*ul.navbar {
+ul.navbar {
   list-style-type: none;
   margin: 0;
-  padding: 0;
-  width: 15%;
-  height: 675px;
+  height: 100%;
+  padding: 10px;
+  width: 100%;
   background-color: #8EA2BD;
   position: -webkit-sticky;
 	position: sticky; 
   overflow: auto;
 
-} */
+}
 .sidebarlink {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 8px;
   text-decoration: none;
   font-size: 20px;
   color: #39495E;
   display: block;
   transition: 0.3s;
+
 }
 a:hover{
   background-color: #8093AB;
@@ -125,6 +125,7 @@ a:hover{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  border: 1px solid grey;
   width: 70%;
   height: 40px;
   font-size: 15px;
@@ -133,8 +134,8 @@ a:hover{
     background-color: #fefefe;
     position: absolute;
     width: 50%;
-    left: 40.9%;
-    top: 50%;
+    left: 41.9%;
+    top: 63%;
     transform: translate(-50%, -50%);
     padding: 10px;
     text-align: left;

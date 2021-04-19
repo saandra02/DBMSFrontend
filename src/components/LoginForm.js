@@ -35,6 +35,8 @@ class LoginForm extends Component {
         window.location.href = "/prisoner";
       }, (error) => {
         console.log(error);
+        alert("Login Failed! Try again");
+        window.location.reload();
       });
     } else if(this.state.role==="Employee"){
       axios({
@@ -62,6 +64,7 @@ class LoginForm extends Component {
         }
       }, (error) => {
         console.log(error);
+        alert("Login Failed! Try again");
       });
     } else if(this.state.role==="Relative"){
       axios({
@@ -80,6 +83,7 @@ class LoginForm extends Component {
         window.location.href = "/relative";
       }, (error) => {
         console.log(error);
+        alert("Login Failed! Try again");
       });
     } else if(this.state.role==="Business"){
       axios({
@@ -98,6 +102,7 @@ class LoginForm extends Component {
         window.location.href = '/business';
       }, (error) => {
         console.log(error);
+        alert("Login Failed! Try again");
       });
 
     }

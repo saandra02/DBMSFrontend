@@ -69,9 +69,6 @@ class BusinessReport extends Component {
           <td>
           <input type="text" id="bname" value={this.state.bname} disabled />
           </td>
-          </tr>
-
-          <tr>
             <td>
               <label htmlFor="bid"> Business ID: </label>
             </td>
@@ -91,8 +88,8 @@ class BusinessReport extends Component {
             <td>
               <label htmlFor="role_desc"> Role Description: </label>
             </td>
-            <td>
-              <input type="text" id="role_desc" value={this.state.role_desc} disabled />
+            <td colSpan='2'>
+              <input type="text" id="role_desc" value={this.state.role_desc} size="50" disabled />
             </td>
           </tr>
           <tr>

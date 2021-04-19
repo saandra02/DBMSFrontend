@@ -211,6 +211,22 @@ a:hover{
     text-transform: capitalize;
   }
 
+  .BusinessReport input:disabled{
+    background-color: #FEFEFE;
+    border: 0px;
+    color: black;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+
+  .RelativeReport input:disabled{
+    background-color: #FEFEFE;
+    border: 0px;
+    color: black;
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+
   .ReportPrisoner table {
     width: 100%;
     text-align: left;

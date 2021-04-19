@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import BusinessNavBar from './BusinessNavBar';
 
 class PrisonerBusList extends Component {
   state = {
@@ -32,23 +33,23 @@ class PrisonerBusList extends Component {
           var row = table.insertRow(i+1);
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
           cell1.innerHTML = this.state.prisoners[i].pid;
-          cell2.innerHTML = this.state.prisoners[i].first_name;
-          cell3.innerHTML = this.state.prisoners[i].last_name;
+          cell2.innerHTML = this.state.prisoners[i].first_name.concat(' ').concat(this.state.prisoners[i].last_name);
       }
   } 
   render() {
     return (
+    <div>
+      <BusinessNavBar/>
     <div className="List">
     <div className="ListHeader"> Employees List</div>
     <table id='prisoners' className='list-table'>
     <tr>
       <th> Prisoner ID </th>
-      <th> First Name</th>
-      <th> Last Name</th>
+      <th> Name</th>
      </tr>
     </table>
+    </div>
     </div>
     );
   }

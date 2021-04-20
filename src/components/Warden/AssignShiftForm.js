@@ -76,6 +76,7 @@ componentDidMount(){
       window.location.href = '/shift';
     }, (error) => {
       console.log(error);
+      alert("Selected shift already assigned!");
     });
   }
   render() {

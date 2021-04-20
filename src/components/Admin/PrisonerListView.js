@@ -58,7 +58,7 @@ class AdminPrisonerListView extends Component {
     return (
     <div> 
     <AdminNavBar/> 
-    <div className="List">
+    <div className="AdminPrisonerList">
     <div className="ListHeader"> 
       Prisoner List
     </div>

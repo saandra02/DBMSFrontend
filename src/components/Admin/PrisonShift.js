@@ -102,7 +102,7 @@ class PrisonShift extends Component {
     return (
       <div>
       <AdminNavBar/>
-      <div className="ReportGuard">
+      <div className="PrisonShift">
         <div className = "ReportHeader"> Shift Prisons </div>
         <br></br>
         <form>
@@ -110,12 +110,13 @@ class PrisonShift extends Component {
           <table className = "ReportTable" id = "guards">
           <tbody>
             <tr>
-              <td> Prisoner ID: </td>
-              <td> Prison Number: </td>
+              <th><u> Prisoner ID </u></th>
+              <th><u> Prison Number </u></th>
             </tr>
             </tbody>
             </table>
-          <table>
+            <br></br>
+          <table className = "PrisonShiftTable">
             <tbody>
           <tr>
             <td>

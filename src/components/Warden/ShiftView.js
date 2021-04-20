@@ -57,15 +57,11 @@ class ShiftView extends Component {
          </span>
          </IconContext.Provider>
          </div>
-          <p className = "ReportSubheading"> Guard and Shift Details</p>
-          <table><tbody><tr><td>Guard ID</td><td>Shift Number</td></tr></tbody></table>
+         <br></br>
           <table id = "guardshifts-section" classname = "ReportTable">
-              <tbody>
-                  <tr></tr>
-              </tbody>
+          <tr><th>Guard ID</th><th>Shift Number</th><th>Delete</th></tr>
           </table>
-          <br/> <br/>
-        <br/>
+          <br></br>
       </div>
       </div>
     );

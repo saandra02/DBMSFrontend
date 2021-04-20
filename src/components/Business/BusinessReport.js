@@ -57,7 +57,6 @@ class BusinessReport extends Component {
       <div>
       <div className="BusinessReport">
         <div className = "ReportHeader"> Business # {this.state.bid}</div>
-        <br></br>
         <form>
         <p className = "ReportSubheading"> Business Details</p>
           <table className = "ReportTable">

@@ -55,7 +55,6 @@ class AddPrisonForm extends Component {
         <div className = "ReportHeader"> Add New Prison </div>
         <br></br>
         <form>
-          <p className = "ReportSubheading"> Personal Details</p>
           <table className = "ReportTable">
           <tbody>
           <tr>
@@ -88,6 +87,7 @@ class AddPrisonForm extends Component {
           </tr>
           </tbody>
           </table>
+          <br></br>
           <div className="add-form-button">
           <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
           </div>

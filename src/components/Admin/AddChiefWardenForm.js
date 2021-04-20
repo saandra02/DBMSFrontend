@@ -92,7 +92,7 @@ class AddChiefWardenForm extends Component {
     return (
       <div>
       <AdminNavBar/>
-      <div className="ReportGuard">
+      <div className="AddCWForm">
         <div className = "ReportHeader"> Add New Chief Warden </div>
         <br></br>
         <form>

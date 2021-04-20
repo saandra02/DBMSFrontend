@@ -74,15 +74,17 @@ class AdminPrisonView extends Component {
       <th> View</th>
       <th> Delete</th>
      </tr>
-     <tr>
+     </table>
+     <br></br>
+     <table>
+       <tr>
           <td>
             <label htmlFor="totalexp">
             Total Cost of Operation: 
             </label>
+            &nbsp; &nbsp; &nbsp;
+            <input type = "text" id = "totalexp" value = {this.state.totalexp} disabled />
           </td>
-          <td>
-              <input type = "text" id = "totalexp" value = {this.state.totalexp} disabled />
-                  </td>
         </tr>
     </table>
     </div>

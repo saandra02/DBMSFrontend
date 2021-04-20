@@ -80,8 +80,7 @@ class UpdateRequirements extends Component {
       <div>
       <BusinessNavBar/>
       <div className="ReportGuard">
-        <div className = "ReportHeader"> Update Requirments </div>
-        <br></br>
+        <div className = "ReportHeader"> Update Requirements </div>
         <form>
           <p className = "ReportSubheading"> Business Details</p>
           <table className = "ReportTable">
@@ -112,7 +111,7 @@ class UpdateRequirements extends Component {
           </tr>
           <tr>
             <td>
-              <label htmlFor="number_required"> Current Requirment </label>
+              <label htmlFor="number_required"> Current Requirement </label>
             </td>
             <td>
               <input type="number" id="number_required" value={this.state.number_required} disabled/>
@@ -120,7 +119,7 @@ class UpdateRequirements extends Component {
           </tr>
           <tr>
             <td>
-              <label htmlFor="new_requirement"> New Requirment </label>
+              <label htmlFor="new_requirement"> New Requirement </label>
             </td>
             <td>
               <input type="number" id="new_requirement" />
@@ -128,7 +127,7 @@ class UpdateRequirements extends Component {
           </tr>
           </tbody>
           </table>
-          <br/> <br/> <br/>
+          <br/> <br/> 
           <div className="add-form-button">
           <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
           </div>

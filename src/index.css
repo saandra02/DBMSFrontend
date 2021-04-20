@@ -134,8 +134,8 @@ a:hover{
     background-color: #fefefe;
     position: absolute;
     width: 50%;
-    left: 41.9%;
-    top: 63%;
+    left: 43%;
+    top: 75%;
     transform: translate(-50%, -50%);
     padding: 10px;
     text-align: left;
@@ -154,8 +154,8 @@ a:hover{
     background-color: #fefefe;
     position: absolute;
     width: 50%;
-    left: 40.9%;
-    top: 46%;
+    left: 42.9%;
+    top: 47.5%;
     transform: translate(-50%, -50%);
     padding: 10px;
     text-align: left;
@@ -164,8 +164,8 @@ a:hover{
     background-color: #fefefe;
     position: absolute;
     width: 50%;
-    left: 40.9%;
-    top: 41%;
+    left: 43%;
+    top: 36%;
     transform: translate(-50%, -50%);
     padding: 10px;
     text-align: left;
@@ -248,4 +248,53 @@ a:hover{
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.AddForm{
+  background-color: #fefefe;
+  position: absolute;
+  width: 50%;
+  left: 42.9%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: left;
+}
+
+.AddCWForm{
+  background-color: #fefefe;
+  position: absolute;
+  width: 50%;
+  left: 42.9%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: left;
+}
+
+#totalexp{
+  border:0px;
+  color: black;
+}
+
+.PrisonShift{
+  background-color: #fefefe;
+    position: absolute;
+    width: 50%;
+    left: 43%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+}
+
+.PrisonShift table {
+  margin:auto;
+  width: 75%;
+  text-align: center;
+  border:1px solid black;
+}
+
+.PrisonShiftTable{
+  border:none;
 }

@@ -79,6 +79,7 @@ class AddChoreAssignment extends Component {
       window.location.href = '/chief_warden/view_chore_assignments';
     }, (error) => {
       console.log(error);
+      alert("Chore requirement maxed, cannot assign!")
     });
   }
 

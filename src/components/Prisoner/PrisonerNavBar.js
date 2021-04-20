@@ -14,7 +14,7 @@ class PrisonerNavBar extends Component{
                     <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>
             </div>
-            
+             
         )
 
     } 

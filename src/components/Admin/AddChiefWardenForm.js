@@ -85,6 +85,7 @@ class AddChiefWardenForm extends Component {
       window.location.href = '/admin/view_chief_wardens';
     }, (error) => {
       console.log(error);
+      alert("Unable to add!");
     });
   }
 

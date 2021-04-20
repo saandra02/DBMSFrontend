@@ -24,7 +24,7 @@ class PrisonReport extends Component {
     }).then((response) => {
       var key = "Prison ".concat(id);
       var res = JSON.parse(response.data[key]);
-      console.log(res)
+      console.log(res);
       var length = res.length;
       var facility = [];
       for(var i = 0; i < length; i++)

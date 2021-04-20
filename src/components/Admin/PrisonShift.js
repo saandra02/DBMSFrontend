@@ -95,6 +95,7 @@ class PrisonShift extends Component {
       window.location.href = '/admin/prison_shift';
     }, (error) => {
       console.log(error);
+      alert("Prison capacity exceeded!");
     });
   }
 

@@ -16,7 +16,7 @@ class DeleteChiefWarden extends Component {
         window.location.href = '/admin/view_chief_wardens';
     }, (error) => {
       console.log(error);
-      alert("Delete failed. Try again later");
+      alert("Delete failed!");
       window.location.href = '/admin/view_chief_wardens';
     });
   }

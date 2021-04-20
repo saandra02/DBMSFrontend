@@ -26,9 +26,7 @@ class AdminWardenListView extends Component {
         console.log(error);
       });
   }
-  func1() {
-    console.log("In function 1 ");
-  }
+
   renderTableData = () => {
       for(var i=0; i<this.state.guards.length; i++){
           var table = document.getElementById("guards");
@@ -40,9 +38,12 @@ class AdminWardenListView extends Component {
           cell1.innerHTML = this.state.guards[i].empid;
           cell2.innerHTML = this.state.guards[i].first_name.concat(" ").concat(this.state.guards[i].last_name);
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/admin/view_warden/' + this.state.guards[i].empid +'"})()> Report </button>' ;
-          cell4.innerHTML = '<button class="view-button"> Delete </button>' ;
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/admin/delete_warden/' + this.state.guards[i].empid + '"})()> Delete </button>' ;
       }
   } 
+  HandleClick = () => {
+    window.location.href = '/admin/add_warden';
+  }
   render() {
     return (
     <div> 

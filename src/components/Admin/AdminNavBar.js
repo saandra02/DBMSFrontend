@@ -15,8 +15,8 @@ class AdminNavBar extends Component{
                     <li> <NavLink to="/admin/view_guards" className="sidebarlink"> View Guards </NavLink></li>
                     <li> <NavLink to = "/admin/view_wardens" className = "sidebarlink"> View Wardens</NavLink></li>
                     <li> <NavLink to = "/admin/view_chief_wardens" className = "sidebarlink"> View Chief Wardens </NavLink></li>
-                    <li> <NavLink to = "/admin/view_prisons" className = "sidebarlink"> View Prisons </NavLink></li>
-                    <li> <NavLink to = "/" className = "sidebarlink"> Prison Shift </NavLink></li>
+                    <li> <NavLink to = "/admin/view_prisons" className = "sidebarlink"> Prisons and Expenditure </NavLink></li>
+                    <li> <NavLink to = "/admin/prison_shift" className = "sidebarlink"> Prison Shift </NavLink></li>
                     <li> <NavLink onClick={this.HandleLogout} to="/" className="sidebarlink">Logout</NavLink></li> 
                 </ul>
             </div>

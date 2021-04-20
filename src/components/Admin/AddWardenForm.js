@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AdminNavBar from './AdminNavBar';
 
-class AddChiefWardenForm extends Component {
+class AddWardenForm extends Component {
   state = {
     empid: null, 
     password: null,
@@ -15,30 +15,29 @@ class AddChiefWardenForm extends Component {
   }
   componentDidMount(){
     var user = JSON.parse(sessionStorage.getItem("user"));
-    var url = '/prison/all/'.concat(user.empid);
+    var url = '/official/chiefwardens/'.concat(user.empid);
     var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
     axios({
       method: 'get',
       url: url,
       headers: {'Authorization': header}
     }).then((response) => {
-        var key = "Prisons";
+        var key = "Chief Wardens";
         var res = JSON.parse(response.data[key]);
         var length = res.length;
+        var chiefwardens = [];
         var prisons = [];
         console.log(res);
         for(var i = 0; i < length; i++)
         {
-            prisons[i] = res[i].pno;
+            chiefwardens[i] = res[i].empid;
+            prisons[i] = res[i].prison_no;
         }
-        var select = document.getElementById("prison_no");
+        var select = document.getElementById("mgr");
         for(i = 0; i < length; i++)
         {
-            select.options.add(new Option(prisons[i]));
+            select.options.add(new Option(chiefwardens[i], " ".concat(prisons[i]).concat(" ").concat(chiefwardens[i])));
         }
-        this.setState({
-          mgr: user.empid
-        });
     }, (error) => {
       console.log(error);
     });
@@ -50,7 +49,12 @@ class AddChiefWardenForm extends Component {
     var first_name = document.getElementById("first_name").value;
     var last_name = document.getElementById("last_name").value;
     var y_o_e = document.getElementById("years_of_experience").value;
-    var prison_no = document.getElementById("prison_no").value;
+    var str = document.getElementById("mgr").value;
+    var arr = str.split(" ");
+    var prison_no = arr[1];
+    var mgr = arr[2];
+    //console.log(arr);
+    //console.log(prison_no);
     var sal = document.getElementById("salary").value;
     this.setState({
       empid: empid,
@@ -60,10 +64,11 @@ class AddChiefWardenForm extends Component {
       y_o_e: y_o_e,
       prison_no : prison_no,
       salary: sal,
-    }, () => this.AddChiefWarden());
+      mgr: mgr
+    }, () => this.AddWarden());
   }
   
-  AddChiefWarden = () => {
+  AddWarden = () => {
     var url = '/official/'.concat(this.state.empid);
     var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
     axios({
@@ -76,13 +81,13 @@ class AddChiefWardenForm extends Component {
         last_name: this.state.last_name,
         salary: this.state.salary,
         years_of_experience: this.state.y_o_e,
-        type: 'Chief Warden',
+        type: 'Warden',
         mgr: this.state.mgr,
         prison_no: this.state.prison_no
       }
     }).then((response) => {
       alert("Successfully added!");
-      window.location.href = '/admin/view_chief_wardens';
+      window.location.href = '/admin/view_wardens';
     }, (error) => {
       console.log(error);
     });
@@ -93,7 +98,7 @@ class AddChiefWardenForm extends Component {
       <div>
       <AdminNavBar/>
       <div className="ReportGuard">
-        <div className = "ReportHeader"> Add New Chief Warden </div>
+        <div className = "ReportHeader"> Add New Warden </div>
         <br></br>
         <form>
           <p className = "ReportSubheading"> Personal Details</p>
@@ -143,19 +148,10 @@ class AddChiefWardenForm extends Component {
           <tbody>
             <tr>
             <td>
-              <label htmlFor="prison_no"> Prison Number: </label>
-            </td>
-            <td>
-              <select id = "prison_no">
-              </select>
-            </td>
-            </tr>
-            <tr>
-            <td>
               <label htmlFor="mgr"> Mgr ID: </label>
             </td>
               <td>
-                <input id = "mgr" value={this.state.mgr} disabled/>
+                <select id = "mgr"></select>
               </td>
             <td>
               <label htmlFor="salary"> Salary: </label>
@@ -177,4 +173,4 @@ class AddChiefWardenForm extends Component {
   }
 }
 
-export default AddChiefWardenForm;
+export default AddWardenForm;

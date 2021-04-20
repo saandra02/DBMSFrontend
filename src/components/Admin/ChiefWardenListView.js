@@ -40,7 +40,7 @@ class AdminCWListView extends Component {
           cell1.innerHTML = this.state.guards[i].empid;
           cell2.innerHTML = this.state.guards[i].first_name.concat(" ").concat(this.state.guards[i].last_name);
           cell3.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/admin/view_chief_warden/' + this.state.guards[i].empid +'"})()> Report </button>' ;
-          cell4.innerHTML = '<button class="view-button"> Delete </button>' ;
+          cell4.innerHTML = '<button class="view-button" onClick=(function(){window.location.href="/admin/delete_chief_warden/'+this.state.guards[i].empid+'"})()> Delete </button>' ;
       }
   } 
   HandleClick = () => {

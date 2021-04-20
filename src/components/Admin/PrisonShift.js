@@ -5,64 +5,94 @@ import AdminNavBar from './AdminNavBar';
 class PrisonShift extends Component {
   state = {
     pid:null,
-    prison_no:null,
-    newprison_no:null
+    prison_no:null
   }
-  componentDidMount(){
-    var user = JSON.parse(sessionStorage.getItem("user"));
-    var url = '/prison/'.concat(user.empid);
-    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
-    axios({
-      method: 'get',
-      url: url,
-      headers: {'Authorization': header}
-    }).then((response) => {
-        var key = "Details ".concat(user.bid);
-        var res = JSON.parse(response.data[key]);
-        this.setState({
-          bid: res[0].bid,
-          bname: res[0].bname,
-          number_required: res[0].number_required,
-          currently_employed: res[0].currently_employed
-        });
-    }, (error) => {
-      console.log(error);
-    });
-  }
+    componentDidMount(){
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      var url = '/prisonerprison/'.concat(user.empid);
+      var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+      axios({
+        method: 'get',
+        url: url,
+        headers: {'Authorization': header}
+      }).then((response) => {
+          var key = "Prisoners";
+          var key1 = "Prisons";
+          var res = JSON.parse(response.data[key]);
+          var res1 = JSON.parse(response.data[key1]);
+          var length = res.length;
+          var length1 = res1.length;
+          var prisoners = [];
+          var prisonprisoners = [];
+          var prisons = [];
+          for(var i = 0; i < length; i++)
+          {
+            prisoners[i] = res[i].pid;
+            prisonprisoners[i] = res[i].prison_no;
+          }
+          for(i = 0; i < length1; i++)
+          {
+            prisons[i] = res1[i].pno;
+          }
+          var select1 = document.getElementById("pid");
+          var select2 = document.getElementById("prison_no");
+          var prison = [];
+          prison = [...new Set(prisons)];
+          var len = prison.length;
+          for(i = 0; i < length; i++)
+          {
+            select1.options.add(new Option(prisoners[i]));
+          }
+          for(i = 0; i < len; i++)
+          {
+            select2.options.add(new Option(prison[i]));
+          }
+          this.setState({
+            pid:prisoners,
+            prison_no:prisonprisoners
+          })
+          this.renderTableData();
+      }, (error) => {
+        console.log(error);
+      });
+    }
+    renderTableData = () => {
+        for(var i=0; i<this.state.pid.length; i++){
+            var table = document.getElementById("guards");
+            var row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = this.state.pid[i];
+            cell2.innerHTML = this.state.prison_no[i];
+        }
+    } 
+
   HandleSubmit= (e) =>{
     e.preventDefault();
     var pid = document.getElementById("pid").value;
     var prison_no = document.getElementById("prison_no").value;
-    var newprison_no = document.getElementById("newprison_no").value;
-    console.log(newprison_no)
-    if (parseInt(newprison_no)!=parseInt(prison_no)){
+    console.log('hi');
+    console.log(prison_no);
       this.setState({
         pid: pid,
-        prison_no: newprison_no,
-        newprison_no: newprison_no
-      }, () => this.UR());
-    } else{
-      alert('New requirement is less than current employees!!')
-    }
+        prison_no: prison_no,
+      }, () => this.UR()); 
   }
   
   UR = () => {
-    var url = '/update_business_requirement/'.concat(this.state.bid);
+    var url = '/prisoner/'.concat(this.state.pid);
     var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
     axios({
       method: 'put',
       url: url,
       headers: {'Authorization': header},
       data: {
-        bid: this.state.bid,
-        bname: this.state.bname,
-        number_required: this.state.number_required,
-        currently_employed: this.state.currently_employed,
-        new_requirement: this.state.new_requirement,
+        pid:this.state.pid,
+        prison_no: this.state.prison_no
       }
     }).then((response) => {
       alert("Successfully added!");
-      window.location.href = '/update_requirements';
+      window.location.href = '/admin/prison_shift';
     }, (error) => {
       console.log(error);
     });
@@ -71,52 +101,34 @@ class PrisonShift extends Component {
   render() {
     return (
       <div>
-      <BusinessNavBar/>
+      <AdminNavBar/>
       <div className="ReportGuard">
         <div className = "ReportHeader"> Shift Prisons </div>
         <br></br>
         <form>
           <p className = "ReportSubheading"> Prisoner and Prison Details</p>
-          <table className = "ReportTable">
+          <table className = "ReportTable" id = "guards">
           <tbody>
+            <tr>
+              <td> Prisoner ID: </td>
+              <td> Prison Number: </td>
+            </tr>
+            </tbody>
+            </table>
+          <table>
+            <tbody>
           <tr>
             <td>
-              <label htmlFor="bid"> Business ID </label>
+            <label htmlFor="pid"> Shift Prisoner ID: </label>
             </td>
             <td>
-              <input type="number" id="bid" value={this.state.bid} disabled />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="bname"> Business Name: </label>
+              <select id = "pid"></select>
             </td>
             <td>
-              <input type="text" id="bname" value={this.state.bname} disabled/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="currently_employed"> Currently Employed: </label>
+              <label htmlFor="prison_no"> Shift to Prison Number: </label>
             </td>
             <td>
-              <input type="number" id="currently_employed" value={this.state.currently_employed} disabled/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="number_required"> Current Requirment </label>
-            </td>
-            <td>
-              <input type="number" id="number_required" value={this.state.number_required} disabled/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="new_requirement"> New Requirment </label>
-            </td>
-            <td>
-              <input type="number" id="new_requirement" />
+              <select id = "prison_no"></select>
             </td>
           </tr>
           </tbody>
@@ -131,5 +143,4 @@ class PrisonShift extends Component {
     );
   }
 }
-
-export default UpdateRequirements;
+export default PrisonShift;

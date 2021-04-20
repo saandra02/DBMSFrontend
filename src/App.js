@@ -45,8 +45,8 @@ import AddChoreAssignment from './components/Chief Warden/AddChoreAssignment.js'
 import VisitSheet from './components/Chief Warden/VisitSheet.js';
 
 import ShiftView from './components/Warden/ShiftView.js';
-import DeleteShiftForm from './components/Warden/DeleteShiftForm.js';
 import AssignShiftForm from './components/Warden/AssignShiftForm.js';
+import ConfirmShiftDelete from './components/Warden/ConfirmShiftDelete.js';
 
 import AdminCWListView from './components/Admin/ChiefWardenListView.js';
 import AdminCWReportView from './components/Admin/ChiefWardenReportView.js';
@@ -58,6 +58,14 @@ import AdminWardenListView from './components/Admin/WardenListView.js';
 import AdminWardenReportView from './components/Admin/WardenReportView.js';
 import AdminGuardListView from './components/Admin/GuardListView.js';
 import AdminGuardReportView from './components/Admin/GuardReportView.js';
+import AdminPrisonReportView from './components/Admin/PrisonReportView.js';
+import AddWardenForm from './components/Admin/AddWardenForm.js';
+import AddPrisonForm from './components/Admin/AddPrisonForm.js';
+import PrisonShift from './components/Admin/PrisonShift.js';
+import DeleteChiefWarden from './components/Admin/DeleteChiefWarden.js';
+import DeleteWarden from './components/Admin/DeleteWarden.js';
+import DeletePrison from './components/Admin/DeletePrison.js';
+
 import CWBusinessReportView from './components/Chief Warden/BusinessReportView.js';
 import CWRelativeReportView from './components/Chief Warden/RelativeReportView.js';
 import CWAddBusinessForm from './components/Chief Warden/AddBusinessForm.js';
@@ -133,7 +141,7 @@ class App extends Component {
 
       <Route exact path = '/shift/' component = {ShiftView} />
       <Route exact path = '/shift/add_shift' component = {AssignShiftForm} />
-      <Route exact path = '/shift/delete_shift' component = {DeleteShiftForm} />
+      <Route exact path = '/shift/confirm_delete/:id/:shiftnumber' component = {ConfirmShiftDelete} />
 
       <Route exact path = '/admin/view_chief_wardens' component = {AdminCWListView} />
       <Route exact path = '/admin/view_chief_warden/:id' component = {AdminCWReportView} />
@@ -141,10 +149,17 @@ class App extends Component {
       <Route exact path = '/admin/view_prisoners' component = {AdminPrisonerListView} />
       <Route exact path = '/admin/view_prisoner/:id' component = {AdminPrisonerReportView} />
       <Route exact path = '/admin/view_prisons' component = {AdminPrisonView} />
+      <Route exact path = '/admin/view_prison/:id' component = {AdminPrisonReportView} />
       <Route exact path = '/admin/view_wardens' component = {AdminWardenListView} />
       <Route exact path = '/admin/view_warden/:id' component = {AdminWardenReportView} />
       <Route exact path = '/admin/view_guards' component = {AdminGuardListView} />
       <Route exact path = '/admin/view_guard/:id' component = {AdminGuardReportView} />
+      <Route exact path = '/admin/add_warden' component = {AddWardenForm} />
+      <Route exact path = '/admin/add_prison' component = {AddPrisonForm} />
+      <Route exact path = '/admin/prison_shift' component = {PrisonShift} />
+      <Route exact path = '/admin/delete_chief_warden/:id' component = {DeleteChiefWarden} />
+      <Route exact path = '/admin/delete_warden/:id' component = {DeleteWarden} />
+      <Route exact path = '/admin/delete_prison/:id' component = {DeletePrison} />
       
       </div>
       </BrowserRouter>

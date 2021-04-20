@@ -72,7 +72,7 @@ bid: this.state.bid,
 pid: this.state.user_id,
 }
 }).then((response) => {
-alert("Constraint successfully changed");
+alert("Update successful!");
 window.location.href = '/chief_warden/view_prisoners'; 
 }, (error) => {
 console.log(error);

@@ -17,7 +17,7 @@ class CWGuardDeleteConfirm extends Component {
     }, (error) => {
       console.log(error);
       alert("Delete failed. Try again later");
-      window.location.href = '/chief_warden/view_guards';
+      window.location.href = '/chief_warden/view_guards'
     });
   }
   HandleNo = () => {

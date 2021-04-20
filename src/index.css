@@ -52,7 +52,7 @@ a {
 div.navbar{
   /* list-style-type: none; */
   height: 740px;  
-  width: 210px;
+  width: 180px;
   /* 
   position: -webkit-sticky; 
   position: sticky;
@@ -65,9 +65,9 @@ div.navbar{
 ul.navbar {
   list-style-type: none;
   margin: 0;
-  height: 100%;
+  height: 740px;
   padding: 10px;
-  width: 100%;
+  width: 180px;
   background-color: #8EA2BD;
   position: -webkit-sticky;
 	position: sticky; 

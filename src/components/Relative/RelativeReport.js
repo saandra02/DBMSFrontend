@@ -65,43 +65,31 @@ class RelativeReport extends Component {
           <table>
           <tbody>
           <tr>
-          <td>
-          <label htmlFor="first_name"> First Name: </label>
-          </td>
-          <td>
-          <input type="text" id="first_name" value={this.state.first_name} disabled />
-          </td>
-          </tr>
-          <tr>
-          <td>
-          <label htmlFor="last_name"> Last Name: </label>
-          </td>
-          <td>
-          <input type="text" id="last_name" value={this.state.last_name} disabled />
-          </td>
+            <td>
+              <label htmlFor="first_name"> First Name: </label>
+            </td>
+            <td>
+              <input type="text" id="first_name" value={this.state.first_name} disabled />
+            </td>
+            <td>
+              <label htmlFor="last_name"> Last Name: </label>
+            </td>
+            <td>
+              <input type="text" id="last_name" value={this.state.last_name} disabled />
+            </td>
           </tr>
           <tr>
             <td>
-              <label htmlFor="pid"> Related to: Prisoner # </label>
+              <label htmlFor="pid"> Related to:</label>
             </td>
             <td>
               <input type="text" id="pid" value={this.state.pid} disabled /> 
             </td>
-          </tr>
-          <tr>
             <td>
               <label htmlFor="relation"> Relation: </label>
             </td>
             <td>
-            <input type="text" id="relation" value={this.state.relation} disabled />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="prison_no"> Prison Number </label>
-            </td>
-            <td>
-              <input type="text" id="prison_no" value={this.state.prison_no} disabled /> 
+              <input type="text" id="relation" value={this.state.relation} disabled />
             </td>
           </tr>
           </tbody>
@@ -111,7 +99,6 @@ class RelativeReport extends Component {
           <table id = "appointment-section">
             <tbody>
             <td>
-            <label htmlFor="appointment_time" > Appointment Time </label> 
             </td>
             </tbody>
           </table>

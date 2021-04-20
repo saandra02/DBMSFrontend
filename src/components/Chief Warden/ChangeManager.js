@@ -2,120 +2,121 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ChiefWardenNavBar from './ChiefWardenNavBar';
 
-class AddChoreAssignment extends Component {
-  state = {
-    empid: null,
-    curr_mgr: null,
-    new_mgr:null
-  }
-  componentDidMount(){
-    var user = JSON.parse(sessionStorage.getItem("user"));
-    var url = '/guard_warden/'.concat(user.empid);
-    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
-    axios({
-      method: 'get',
-      url: url,
-      headers: {'Authorization': header}
-    }).then((response) => {
-        var key = "Warden ".concat(user.empid);
-        var res = JSON.parse(response.data[key]);
-        var length = res.length;
-        var select = document.getElementById("mgrs")
-        for(var i=0; i<length; i++){
-          var mgr = {}
-          mgr.empid = res[i].empid;
-          c_select.options.add(new Option(chores_unique[j], chores_unique[j]));
-        }
-        var chores_unique = [...new Set(chores)];
-        var prisoners_unique = [...new Set(prisoners)];
-
-        var c_length = chores_unique.length;
-        var p_length = prisoners_unique.length;
-
-        
-        var c_select = document.getElementById("chores");
-
-        for(var j=0; j<c_length; j++){
-            c_select.options.add(new Option(chores_unique[j], chores_unique[j]));
-        }
-
-        for(var k=0; k<p_length; k++){
-            p_select.options.add(new Option(prisoners_unique[k], prisoners_unique[k]));   
-        }
-
-    }, (error) => {
-      console.log(error);
-    });
-  } 
-
-  HandleSubmit = (e) =>{
-    e.preventDefault();
-    var chore_name = document.getElementById("chores").value;
-    var pid = document.getElementById("prisoners").value;
-    this.setState({
-      chore_name: chore_name,
-      pid: pid
-    }, () => this.AddChoreAssignment()); 
-  }
-
-  AddChoreAssignment = () => {
-    var url = '/chore';
-    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
-    axios({
-      method: 'post',
-      url: url,
-      headers: {'Authorization': header},
-      data: {
-        chore_name: this.state.chore_name,
-        pid: this.state.pid,
-        prison_no: this.state.prison_no
-      }
-    }).then((response) => {
-      alert("Successfully added!");
-      window.location.href = '/chief_warden/view_chore_assignments';
-    }, (error) => {
-      console.log(error);
-    });
-  }
-
-  render() {
-    return (
-      <div>
-      <ChiefWardenNavBar/>
-      <div className="ReportGuard">
-        <div className = "ReportHeader"> Add Chore Assignment </div>
-        <br></br>
-        <form>
-          <p className = "ReportSubheading"> Chore Assignment Details</p>
-          <table className = "ReportTable">
-          <tbody>
-          <tr>
-            <td>
-              <label htmlFor="prisoners"> Prisoner ID: </label>
-            </td>
-            <td colSpan='2'>
-              <select type="number" id="prisoners">
-              </select>
-            </td>
-            <td>
-              <label htmlFor="chores"> Chore Name: </label>
-            </td>
-            <td colSpan='2'>
-              <select type="text" id="chores">
-              </select>
-            </td>
-          </tr>
-          </tbody>
-          </table>
-        </form>
-        <br/> <br/> <br/>
-          <div className="add-form-button">
-          <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
-          </div>
-      </div>
-      </div>
-    );
-  }
+class AssignManager extends Component {
+state = {
+    mgr: null,
+    cempid: null,
+    empid: null
 }
 
-export default AddChoreAssignment;
+componentDidMount(){
+    var user_id = this.props.match.params.id;
+    var url = '/guard_warden_comb/'.concat(user_id); //change
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+        method: 'get',
+        url: url,
+        headers: {'Authorization': header}
+    }).then((response) => {
+    var key = "Combination ".concat(user_id);
+    var res = JSON.parse(response.data[key]);
+    var len = res.length;
+    var cempids = [];
+    for (var a=0;a<len;a++){
+        cempids[a]=res[a].cempid;
+    }
+    this.setState({
+        mgr : res[0].mgr,
+        empid: user_id
+    });
+    if (res[0].mgr == null){
+        this.setState({
+            cempid: 0
+        });
+    }
+    var select = document.getElementById("newMGR");
+    for(var i = 0; i < cempids.length; i++) {
+        var opt = cempids[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+    }
+    }, (error) => {
+        console.log(error);
+    });
+}
+
+HandleSubmit= (e) =>{
+    e.preventDefault();
+    var empid = this.props.match.params.id;
+    var mgr = document.getElementById("mgr").value;
+    var cempid = document.getElementById("newMGR").value;
+    this.setState({
+    mgr: mgr,
+    cempid: cempid,
+    empid: empid
+    }, () => this.UR());
+}
+
+UR = () => {
+    var url = '/update_mgr_id';   //change
+    var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+    axios({
+    method: 'put',
+    url: url,
+    headers: {'Authorization': header},
+    data: {
+        cempid: this.state.cempid,
+        empid: this.state.empid,
+    }
+    }).then((response) => {
+        alert("Update successful");
+        window.location.href = '/chief_warden/view_guards'; //change this
+    }, (error) => {
+    console.log(error);
+    });
+}
+
+render() {
+    return (
+    <div>
+    <ChiefWardenNavBar/>
+    <div className="ReportGuard">
+    <div className = "ReportHeader"> Assign New Manager </div>
+    <br></br>
+    <form>
+        <table className = "ReportTable">
+            <tbody>
+                <tr>
+                    <td>
+                        <label htmlFor="mgr"> Managed By </label>
+                    </td>
+                    <td>
+                        <input type="number" id="mgr" value={this.state.mgr} disabled />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label htmlFor="newMGR"> New Manager ID </label>
+                    </td>
+                    <td>
+                        <select id="newMGR">
+                        <option>Choose a new ID</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/> <br/> <br/>
+        <div className="add-form-button">
+        <button onClick={this.HandleSubmit} className="Submit"> Submit </button>
+        </div>
+    </form>
+    </div>
+    </div>
+    );
+    }
+    }
+
+export default AssignManager;

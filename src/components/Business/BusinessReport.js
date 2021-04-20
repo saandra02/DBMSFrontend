@@ -83,16 +83,6 @@ class BusinessReport extends Component {
             <td>
               <input type="text" id="role" value={this.state.role} disabled />
             </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="role_desc"> Role Description: </label>
-            </td>
-            <td colSpan='2'>
-              <input type="text" id="role_desc" value={this.state.role_desc} size="50" disabled />
-            </td>
-          </tr>
-          <tr>
             <td>
               <label htmlFor="sal"> Salary: </label>
             </td>
@@ -102,18 +92,24 @@ class BusinessReport extends Component {
           </tr>
           <tr>
             <td>
-              <label htmlFor="number_required"> Number of Employees Required: </label>
+              <label htmlFor="number_required"> Employees Required: </label>
             </td>
             <td>
               <input type="text" id="number_required" value={this.state.number_required} disabled />
             </td>
-          </tr>
-          <tr>
             <td>
-              <label htmlFor="number_employed"> Number of Employees Employed: </label>
+              <label htmlFor="number_employed"> Employees Employed: </label>
             </td>
             <td>
               <input type="text" id="number_employed" value={this.state.number_employed} disabled />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label htmlFor="role_desc"> Role Description: </label>
+            </td>
+            <td colSpan='2'>
+              <input type="text" id="role_desc" value={this.state.role_desc} size="50" disabled />
             </td>
           </tr>
           </tbody>

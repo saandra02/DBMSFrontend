@@ -8,6 +8,26 @@ class AddVisits extends Component {
       rid: null,
       appointment_date: null
     }
+    componentDidMount(){
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      console.log(user.rid)
+      var url = '/relative_sheet/'.concat(user.rid);
+      var header = 'Bearer '.concat(sessionStorage.getItem('access_token'));
+      axios({
+        method: 'get',
+        url: url,
+        headers: {'Authorization': header}
+      }).then((response) => {
+        var key = "Relative ".concat(user.rid);
+        var res = JSON.parse(response.data[key]);
+        this.setState({
+          rid: res[0].rid,
+        })
+        console.log(this.state);
+      }, (error) => {
+        console.log(error);
+      });
+    }
     HandleSubmit= (e) =>{
       e.preventDefault();
       var vid = document.getElementById("vid").value;
@@ -65,7 +85,7 @@ class AddVisits extends Component {
                 <label htmlFor="rid"> Relative ID </label>
               </td>
               <td>
-                <input type="number" id="rid" />
+                <input type="number" id="rid" value={this.state.rid} disabled/>
               </td>
             </tr>
             <tr>

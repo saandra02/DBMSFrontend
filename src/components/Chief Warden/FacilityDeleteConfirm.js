@@ -19,10 +19,11 @@ class CWFacilityDeleteConfirm extends Component {
       }
     }).then((response) => {
         alert("Successfully deleted");
-        window.location.href = '/chief_warden/view_chore_assignments';
+        window.location.href = '/chief_warden/view_facility';
     }, (error) => {
       console.log(error);
       alert("Delete failed. Try again later");
+      window.location.href = '/chief_warden/view_facility';
       
     });
   }

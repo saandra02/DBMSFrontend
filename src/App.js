@@ -79,6 +79,8 @@ import AssignBusiness from './components/Chief Warden/ChangeEmployer.js';
 import CWExpenseReportView from './components/Chief Warden/ExpenseReportView.js';
 import AssignManager from './components/Chief Warden/ChangeManager.js';
 import GuardPrisonerListView from './components/Guard/PrisonerListView.js';
+import WardenGuardList from './components/Warden/WardenGuardList.js';
+import WardenPrisonerList from './components/Warden/WardenPrisonerList.js';
 
 class App extends Component {
   render() {
@@ -99,8 +101,11 @@ class App extends Component {
       <Route exact path = '/view_employees' component={PrisonerBusList} />
       <Route exact path= '/guard/view_prisoners' component = {GuardPrisonerListView} />
       <Route exact path= '/guard/view_prisoner/:id' component = {GuardPrisonerReportView} />
+
       <Route exact path= '/warden/view_prisoner/:id' component = {WardenPrisonerReportView} />
       <Route exact path= '/warden/view_guard/:id' component = {WardenGuardReportView} />
+      <Route exact path = '/warden/view_guards' component = {WardenGuardList} />
+      <Route exact path = '/warden/view_prisoners' component = {WardenPrisonerList} />
       <Route exact path = '/view_guards' component= {GuardList} />
       <Route exact path = '/update_requirements' component= {UpdateRequirements} />
       <Route exact path = '/add_visit' component={AddVisits} />
